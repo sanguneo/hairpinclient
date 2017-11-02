@@ -3,7 +3,7 @@ const webpack = require ('webpack');
 const ExtractTextPlugin = require ('extract-text-webpack-plugin');
 const HTMLWebpackPlugin = require ('html-webpack-plugin');
 
-const devPORT = 3000;
+const devPORT = 61194;
 const publicFile = 'public';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
