@@ -10,9 +10,9 @@ import './App.scss';
 import Routes from './routes/routes';
 
 const App = () => (
-  <Router>
-    <Routes />
-  </Router>
+    <Router>
+        <Routes />
+    </Router>
 );
 
 export default App;
