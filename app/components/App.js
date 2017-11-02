@@ -1,16 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { footer } from '../styles/footer.scss';
-import Routes from '../routes';
 
-const App = () =>
-    <div>
-        <h1>Filter table</h1>
-        { Routes }
-        <footer className={footer}>
-            <Link to="/">Filterable Table</Link>
-            <Link to="/about">About</Link>
-        </footer>
-    </div>;
+const App = () => {
+  return (
+    <h2 id="heading">Hello ReactJS</h2>
+  );
+};
 
 export default App;
