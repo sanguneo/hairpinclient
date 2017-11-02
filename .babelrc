@@ -1,12 +1,26 @@
 {
   "presets": [
-    ["es2015"],
-    "stage-2",
     "react",
-    "react-boilerplate"
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": "last 2 versions"
+        },
+        "modules": false,
+        "loose": true
+      }
+    ]
   ],
-
   "plugins": [
-    "react-hot-loader/babel"
-  ]
+    "react-hot-loader/babel",
+    "babel-plugin-transform-class-properties"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
 }
