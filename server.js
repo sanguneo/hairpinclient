@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 3000;
 // asdfsdafsdafsdafsdafsdafasfsdaf
 
@@ -26,6 +27,6 @@ app.use((err, req, res, next) => {
     res.send('500 - Server Error');
 });
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT,HOST, (req, res) => {
   console.log(`The server is up on port ${PORT}`);
 });
