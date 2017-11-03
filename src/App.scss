@@ -8,7 +8,7 @@
 }
 
 ::selection {
-  background: #61DAFB
+  background: #61dafb;
 }
 
 html {
@@ -21,16 +21,16 @@ html {
 }
 
 .header {
-  background: #282C34;
+  background: #282c34;
   text-align: center;
   width: 100%;
 }
 
 .title {
-  color: #61DAFB;
+  color: #61dafb;
   font-size: 1rem;
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .logo {
@@ -40,7 +40,7 @@ html {
 }
 
 ul.nav {
-  background: #20232A;
+  background: #20232a;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,29 +49,29 @@ ul.nav {
 
 .link {
   display: block;
-  color: #FAFAFA;
+  color: #fafafa;
   font-size: 1.5rem;
   padding: 10px 25px;
   text-decoration: none;
   &:hover {
-    color: darken(#FAFAFA, 10%);
+    color: darken(#fafafa, 10%);
   }
 }
 
 .about {
   text-align: center;
   .component-title {
-    color: #20232A;
+    color: #20232a;
     font-size: 2.5rem;
     margin: 25px 0;
   }
   input {
-    background: #20232A;
-    color: #FAFAFA;
+    background: #20232a;
+    color: #fafafa;
     padding: 5px;
     height: 30px;
     margin: 25px 0;
-    //outline: 10px solid #61DAFB;
+    //outline: 10px solid #61dafb;
     text-align: center;
   }
 }
@@ -84,7 +84,7 @@ ul.nav {
     font-size: 2rem;
     margin: 20px 0;
   }
-  ul>li {
+  ul > li {
     padding: 5px;
   }
 }
