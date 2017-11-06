@@ -21,4 +21,4 @@ const CommonHeader = () => (
 	</header>
 );
 
-export default Header;
+export default CommonHeader;
