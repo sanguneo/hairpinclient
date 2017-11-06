@@ -4,8 +4,8 @@ import hairpinLogo from './../img/logo.png';
 
 const CommonHeader = () => (
 	<header className="commonHeader">
-		<img className="logo" src={hairpinLogo} alt="react logo"/>
-		<h1 className="title">React & Redux <br/> Boilerplate</h1>
+		<img className="logo" src={hairpinLogo} alt="hairpin"/>
+		{/*<h1 className="title"></h1>*/}
 		<ul className="nav">
 			<li className="item">
 				<NavLink to="/" className="link" exact activeClassName="active">
