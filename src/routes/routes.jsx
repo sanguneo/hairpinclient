@@ -3,11 +3,12 @@ import {Route, Switch} from 'react-router';
 
 import About from '../containers/About';
 import Header from '../components/Header';
+import CommonHeader from '../components/CommonHeader';
 import Features from '../components/Features';
 
 export default () => (
     <div>
-        <Header />
+        <CommonHeader />
         <Switch>
             <Route exact path="/" component={About} />
             <Route exact path="/features" component={Features} />
