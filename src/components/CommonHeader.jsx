@@ -1,10 +1,10 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import reactLogo from './../img/logo.svg';
+import hairpinLogo from './../img/logo.png';
 
 const CommonHeader = () => (
 	<header className="commonHeader">
-		<img className="logo" src={reactLogo} alt="react logo"/>
+		<img className="logo" src={hairpinLogo} alt="react logo"/>
 		<h1 className="title">React & Redux <br/> Boilerplate</h1>
 		<ul className="nav">
 			<li className="item">
