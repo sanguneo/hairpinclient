@@ -27,7 +27,7 @@ html {
 }
 .commonHeader {
   background: #282c34;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 
@@ -39,9 +39,9 @@ html {
 }
 
 .logo {
-  animation: App-logo-spin infinite 20s linear;
   height: auto;
   width: 150px;
+  float: left;
 }
 
 ul.nav {
@@ -91,14 +91,5 @@ ul.nav {
   }
   ul > li {
     padding: 5px;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
