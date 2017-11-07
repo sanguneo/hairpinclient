@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 /* eslint-disable */
 import './favicon.ico?output=favicon.ico';
 /* eslint-enable */
-import './App.scss';
+import './css/app.scss';
 
 import Routes from './routes/routes';
 

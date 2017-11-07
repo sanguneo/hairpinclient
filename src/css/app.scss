@@ -25,44 +25,6 @@ html {
   text-align: center;
   width: 100%;
 }
-.commonHeader {
-  background: #282c34;
-  text-align: left;
-  width: 100%;
-}
-
-.title {
-  color: #61dafb;
-  font-size: 1rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.logo {
-  height: auto;
-  width: 250px;
-  float: left;
-}
-
-ul.nav {
-  background: #20232a;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-}
-
-.link {
-  display: block;
-  color: #fafafa;
-  font-size: 1.5rem;
-  padding: 10px 25px;
-  text-decoration: none;
-  &:hover {
-    color: darken(#fafafa, 10%);
-  }
-}
-
 .about {
   text-align: center;
   .component-title {
@@ -91,5 +53,27 @@ ul.nav {
   }
   ul > li {
     padding: 5px;
+  }
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h3 {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  ul > li {
+    padding: 5px;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
