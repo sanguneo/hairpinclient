@@ -67,7 +67,7 @@ class Login extends React.Component {
 				<div className="container">
 					<img className="photo" src={userIcon} alt="profile" />
 					{!this.props.user.status? <form className="form" onSubmit={(e)=> {e.preventDefault();this.login()}}>
-						<input type="text" name="email" placeholder="E-MAIL 입력" defaultValue=""/>
+						<input type="email" name="email" placeholder="E-MAIL 입력" defaultValue=""/>
 						<input type="password" name="password" placeholder="PASSWORD 입력" defaultValue=""/>
 						<input type="submit" value="Login" onClick={()=> {this.login()}}/>
 					</form> : null}
