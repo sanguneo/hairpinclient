@@ -2,7 +2,7 @@ import {applyMiddleware, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './../reducers';
 
-const configure = (initialState = {}) => {
+export default function configureStore(initialState) {
 	const composeEnhancers =
 		/* eslint-disable */
 		// Deactivate redux devtools if production
@@ -27,6 +27,4 @@ const configure = (initialState = {}) => {
 	}
 
 	return store;
-};
-
-export default configure;
+}

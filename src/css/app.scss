@@ -60,12 +60,29 @@ html {
   display: flex;
   align-items: center;
   flex-direction: column;
-  h3 {
-    font-size: 2rem;
-    margin: 20px 0;
-  }
-  ul > li {
-    padding: 5px;
+  .container {
+    box-sizing: border-box;
+    width: 50%;
+    list-style-type: none;
+    li {
+      height: 50px;
+      div {
+        height: 50px;
+        line-height: 50px;
+        float: left;
+      }
+      div:first-child {
+        padding: 0 10px;
+        width: calc(100% - 200px);
+      }
+      div:last-child {
+        width: 200px;
+        text-align: center;
+      }
+    }
+    li:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
   }
 }
 

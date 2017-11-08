@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import Util from '../services/util_svc';
+
 class Notice extends React.Component {
 	constructor(props) {
 		super(props);
@@ -12,11 +14,13 @@ class Notice extends React.Component {
 		this.getNotices();
 	}
 
-	getNotices = () => {
+	getNotices() {
 		axios.get('http://calbum.sanguneo.com/notice/list').then((response) => {
 			if(response.data.code === 310) {
 				this.setState({
-					rows: response.data.notice.map((e) => <span key={e._id}>{e.title}</span>)
+					rows: response.data.notice.map((e) => {
+						return <li key={e._id}><div>{e.title}</div><div>{Util.isoFormatter(e.regDate)}</div></li>;
+					})
 				});
 			} else {
 				console.log('error');
@@ -27,7 +31,9 @@ class Notice extends React.Component {
 	render() {
 		return (
 			<div className="notice">
-				{this.state.rows}
+				<ul className="container">
+					{this.state.rows}
+				</ul>
 			</div>
 		);
 	}

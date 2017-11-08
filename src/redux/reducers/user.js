@@ -1,5 +1,6 @@
-import * as types from '../actionType/user';
 import Immutable from 'seamless-immutable';
+
+import * as types from '../actionType/user';
 
 const initialState = Immutable({
 	status : false,
