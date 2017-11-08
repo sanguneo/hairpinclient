@@ -1,5 +1,9 @@
 import React from 'react';
-import {NavLink, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import {NavLink} from 'react-router-dom';
+
+
 
 import hairpinLogo from '../img/logo.png';
 import menu from '../img/menu.svg';
@@ -13,19 +17,25 @@ class CommonHeader extends React.Component {
 		super(props);
 		this.state = {
 			thin: true,
-			menuOpened: false,
-			user: false
+			menuOpened: false
 		};
 	}
 
 	render() {
+		const userIcon = (this.props.user.status
+			? `http://calbum.sanguneo.com/upload/profiles/${this.props.user.signhash}`
+			: user
+		)
+
 		return <header className={this.state.thin ? "commonHeader thin" : "commonHeader"}>
-			<img className="logo" src={hairpinLogo} alt="hairpin" onClick={()=> this.setState({ thin : !this.state.thin, menuOpened: false })}/>
+			<img className="logo" src={hairpinLogo} alt="hairpin" onClick={()=>{
+				// this.props.dispatch(userAction.logout());
+				this.setState({ thin : !this.state.thin, menuOpened: false });
+			}}/>
 			<img className="menu" src={menu} alt="menu" onClick={()=> this.setState({ menuOpened : !this.state.menuOpened })}/>
-			<NavLink to="/features" className="user" activeClassName="active">
-				<img className="user" src={user} alt="user"/>
+			<NavLink to="/login" className="user" activeClassName="active">
+				<img className={this.props.user.status ? "user loggedIn" : "user"} src={userIcon} alt="user"/>
 			</NavLink>
-			{this.state.user ? <Redirect push to="/features" /> : null}
 			<ul className={this.state.menuOpened ? "nav opened" : "nav"}>
 				<li className="item">
 					<NavLink to="/" className="link" exact activeClassName="active">
@@ -43,10 +53,13 @@ class CommonHeader extends React.Component {
 					</NavLink>
 				</li>
 			</ul>
-			<div className={this.state.menuOpened ? "bg opened" : "bg"} onClick={()=> this.setState({ menuOpened : false })}></div>
+			<div className={this.state.menuOpened ? "bg opened" : "bg"} onClick={()=> this.setState({ menuOpened : false })} />
 		</header>;
 	}
 }
 
 
-export default CommonHeader;
+
+const mapStateToProps = state => ({greet: state.greet, user: state.user});
+
+export default connect (mapStateToProps) (CommonHeader);

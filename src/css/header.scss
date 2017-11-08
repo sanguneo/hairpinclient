@@ -28,13 +28,22 @@
     transition: 0.5s ease all;
   }
 
-  * .user {
+  * > .user {
     position: absolute;
     top: 0;
-    right:0;
-    padding: 13px;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    margin: 13px;
     filter: invert(90%);
     cursor: pointer;
+  }
+
+  * > .user.loggedIn {
+    width: 32px;
+    height: 32px;
+    margin: 8px;
+    filter: none;
   }
 
   .bg {

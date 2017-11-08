@@ -69,6 +69,54 @@ html {
   }
 }
 
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  img {
+    width: 300px;
+    height: 300px;
+    margin: 50px 0;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+
+  .form, .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    input {
+      width: 250px;
+      text-align: center;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      padding: 10px 0;
+      margin-top: 10px;
+    }
+    input[type=button], input[type=submit] {
+      border: 0;
+      background-color: lightskyblue;
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  .info {
+    input[type=button] {
+      background-color: lightpink;
+    }
+  }
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,18 +1,24 @@
 // @flow
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
+import {Provider} from 'react-redux';
+
+import Routes from './routes/routes';
+import configure from './redux/store/configureStore';
 
 /* eslint-disable */
 import './favicon.ico?output=favicon.ico';
 /* eslint-enable */
 import './css/app.scss';
 
-import Routes from './routes/routes';
+const store = configure ();
 
 const App = () => (
-    <Router>
-        <Routes />
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <Routes />
+        </Router>
+    </Provider>
 );
 
 export default App;

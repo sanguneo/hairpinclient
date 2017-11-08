@@ -5,6 +5,7 @@ import CommonHeader from '../components/CommonHeader';
 import Home from '../containers/Home';
 import Features from '../containers/Features';
 import Notice from '../containers/Notice';
+import Login from '../containers/Login';
 
 
 export default () => (
@@ -14,6 +15,7 @@ export default () => (
             <Route exact path="/" component={Home} />
             <Route exact path="/features" component={Features} />
             <Route exact path="/notice" component={Notice} />
+            <Route exact path="/login" component={Login} />
             <Route render={() => <h1>Not Found :(</h1>} />
         </Switch>
     </div>
