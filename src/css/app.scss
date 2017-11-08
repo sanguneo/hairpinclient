@@ -63,6 +63,7 @@ html {
   .container {
     box-sizing: border-box;
     width: 50%;
+    min-width: 320px;
     list-style-type: none;
     li {
       height: 50px;
