@@ -16,9 +16,15 @@ class CommonHeader extends React.Component {
 			menuOpened: false
 		};
 	}
+	loginroute(){
+		this.setState({loginthin:true}, ()=>{
+			this.setState({loginthin: false});
+		});
+	}
+	
 
 	render() {
-		const thin = window.location.pathname !== '/';
+		const thin = this.state.loginthin||window.location.pathname !== '/';
 		const userIcon = (this.props.user.status
 			? `http://calbum.sanguneo.com/upload/profiles/${this.props.user.signhash}`
 			: user
@@ -27,7 +33,7 @@ class CommonHeader extends React.Component {
 			<img className="logo" src={hairpinLogo} alt="hairpin"/>
 			<img className="menu" src={menu} alt="menu" onClick={()=> this.setState({ menuOpened : !this.state.menuOpened })}/>
 			<NavLink to="/login" className="user" activeClassName="active">
-				<img className={this.props.user.status ? "user loggedIn" : "user"} src={userIcon} alt="user"/>
+				<img className={this.props.user.status ? "user loggedIn" : "user"} onClick={() => {this.loginroute()}} src={userIcon} alt="user"/>
 			</NavLink>
 			<ul className={this.state.menuOpened ? "nav opened" : "nav"}>
 				<li className="item">
