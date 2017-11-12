@@ -11,7 +11,7 @@ class Login extends React.Component {
 		super(props);
 	}
 
-	login() {
+	login() {alert(1);
 		axios.post(
 			'http://calbum.sanguneo.com/user/login',
 			{
