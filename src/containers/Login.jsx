@@ -69,7 +69,7 @@ class Login extends React.Component {
 					{!this.props.user.status? <form className="form" onSubmit={(e)=> {e.preventDefault();this.login()}}>
 						<input type="email" name="email" placeholder="E-MAIL 입력" defaultValue=""/>
 						<input type="password" name="password" placeholder="PASSWORD 입력" defaultValue=""/>
-						<input type="submit" value="Login" onClick={()=> {this.login()}}/>
+						<input type="button" value="Login" onClick={()=> {this.login()}}/>
 					</form> : null}
 					{!this.props.user.status? null :
 					<div className="info">
