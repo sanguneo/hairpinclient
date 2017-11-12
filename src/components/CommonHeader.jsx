@@ -13,7 +13,7 @@ class CommonHeader extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			menuOpened: false
+			menuOpened: false, loginthin: false
 		};
 	}
 	loginroute(){
