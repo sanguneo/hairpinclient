@@ -32,11 +32,10 @@ class Login extends React.Component {
 					email: response.data.email,
 					signhash: response.data.signhash,
 					name: response.data.nickname,
+					status: true
 				};
 				this.props.dispatch(userAction.login(userinfo));
-				for (let key in userinfo) {
-					sessionStorage.setItem(key, userinfo[key]);
-				}
+				window.sessionStorage.setItem('hairpinToken', JSON.stringify(userinfo));
 			} else if (response.data.message === 'noaccount')  {
 				alert('로그인 되어있지 않습니다.\n가입하시겠습니까?')
 			} else if (response.data.message === 'invalidpw')  {
@@ -50,15 +49,12 @@ class Login extends React.Component {
 
 	logout() {
 		if(!confirm('로그아웃 하시겠습니까?')) return;
-		const userinfo = ['token', '_id', 'email', 'signhash', 'name'];
-		userinfo.forEach((key) => {
-			sessionStorage.removeItem(key);
-		});
+		window.sessionStorage.removeItem('hairpinToken');
 		this.props.dispatch(userAction.logout());
 	}
 
 	render() {
-		const userIcon = (this.props.user.status
+		const userIcon = (this.props.user.token
 				? `http://calbum.sanguneo.com/upload/profiles/${this.props.user.signhash}`
 				: user
 		)
