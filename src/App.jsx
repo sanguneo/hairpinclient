@@ -14,6 +14,7 @@ import './css/app.scss';
 const persistedState = window.sessionStorage.getItem('hairpinToken')
 	? {user: JSON.parse(window.sessionStorage.getItem('hairpinToken'))}
 	: undefined;
+
 const store = configure (persistedState);
 
 const App = () => (
