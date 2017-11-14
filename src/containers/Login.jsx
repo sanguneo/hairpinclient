@@ -54,18 +54,19 @@ class Login extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.user.status);
 		const userIcon = (this.props.user.token
 				? `http://calbum.sanguneo.com/upload/profiles/${this.props.user.signhash}`
 				: user
 		)
 		return (
 			<div className="login">
-				<div className="container">
+				<div className={this.props.user.status ? "container loggedin" : "container"}>
 					<img className="photo" src={userIcon} alt="profile" />
 					{!this.props.user.status? <form className="form" onSubmit={(e)=> {e.preventDefault();this.login()}}>
 						<input type="email" name="email" placeholder="E-MAIL 입력" defaultValue=""/>
 						<input type="password" name="password" placeholder="PASSWORD 입력" defaultValue=""/>
-						<input type="button" value="Login" onClick={()=> {this.login()}}/>
+						<input type="submit" value="Login" />
 					</form> : null}
 					{!this.props.user.status? null :
 					<div className="info">
