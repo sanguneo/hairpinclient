@@ -9,8 +9,6 @@ import hairpinLogo from '../img/logo.png';
 import menu from '../img/menu.svg';
 import user from '../img/user.svg';
 
-import '../css/header.scss';
-
 class CommonHeader extends React.Component {
 	constructor(props) {
 		super(props);
@@ -19,8 +17,9 @@ class CommonHeader extends React.Component {
 
 	loginroute(){
 		this.forceUpdate(()=>{
-			this.props.shadow.forceUpdate()
-			this.props.menu.forceUpdate()
+			this.props.shadow.forceUpdate();
+			this.props.menu.forceUpdate();
+			this.props.dispatch(appAction.shadowmenuout());
 		});
 	}
 

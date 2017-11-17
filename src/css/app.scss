@@ -177,6 +177,7 @@ html {
         height: 100px;
       }
       .info {
+        width: 200px;
         .myCounts {
           width: 100%;
           & > div {
@@ -200,7 +201,6 @@ html {
           width: 100%;
         }
         .username {
-          margin: 0 70px;
           text-align: center;
           font-weight: bold;
         }
@@ -210,6 +210,59 @@ html {
         input[type=button] {
           background-color: lightpink;
         }
+      }
+    }
+  }
+}
+
+.vuser {
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    .photo {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid lightgray;
+      transition: 0.5s ease width, 0.5s ease height;
+    }
+    .info {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .myCounts {
+        width: 100%;
+        & > div {
+          float: left;
+          margin: 2px 0;
+          width: 33%;
+          text-align: center;
+          .indi {
+            height: 25px;
+            font-weight: bold;
+            font-size:20px;
+          }
+          .label {
+            height: 15px;
+            font-family: Verdana;
+            font-size: 11px;
+          }
+        }
+      }
+      .username {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
       }
     }
   }

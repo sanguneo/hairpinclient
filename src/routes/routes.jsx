@@ -9,6 +9,7 @@ import Home from '../containers/Home';
 import Features from '../containers/Features';
 import Notice from '../containers/Notice';
 import Login from '../containers/Login';
+import Vuser from '../containers/Vuser';
 
 export default () => (
     <div id="appWrapper">
@@ -17,9 +18,10 @@ export default () => (
         <Shadow ref={ref => this.shadow = ref}/>
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/features" component={Features} />
+			<Route exact path="/login" component={Login} />
+			<Route exact path="/features" component={Features} />
             <Route exact path="/notice" component={Notice} />
-            <Route exact path="/login" component={Login} />
+			<Route exact path="/vuser" component={Vuser} />
             <Route render={() => <h1 style={{position: 'absolute', top: 'calc(50% - 20px)', left: 'calc(50% - 90px)'}}>Not Found :(</h1>} />
         </Switch>
     </div>
