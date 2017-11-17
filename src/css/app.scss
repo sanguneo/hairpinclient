@@ -52,6 +52,9 @@ html {
     list-style-type: none;
     li {
       height: 50px;
+      &:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
       div {
         height: 50px;
         line-height: 50px;
@@ -66,9 +69,6 @@ html {
         text-align: center;
       }
     }
-    li:nth-child(odd) {
-      background-color: #f9f9f9;
-    }
   }
   .viewer {
     position: absolute;
@@ -82,6 +82,10 @@ html {
     z-index: 3;
     opacity: 0;
     transition: 1s ease visibility, 1s ease opacity;
+    &.opened {
+      opacity: 1;
+      visibility: visible;
+    }
     .closeBtn {
       position: absolute;
       border: 1px solid #d9d9d9;
@@ -120,10 +124,6 @@ html {
       margin-left: 10px;
     }
   }
-  .viewer.opened {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
 .login {
@@ -136,22 +136,23 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    &.loggedin {
+      flex-direction: row;
+      .photo {
+        width: 100px;
+        height: 100px;
+      }
+    }
   }
   .photo {
     width: 300px;
     height: 300px;
-    margin: 50px;
+    margin: 10px;
     border-radius: 5px;
     border: 1px solid lightgray;
     transition: 0.5s ease width, 0.5s ease height;
   }
-  .container.loggedin {
-    flex-direction: row;
-  }
-  .container.loggedin > .photo {
-    width: 150px;
-    height: 150px;
-  }
+
   .form, .info {
     display: flex;
     align-items: center;
@@ -175,8 +176,12 @@ html {
   }
 
   .info {
+    input {
+      width: 180px;
+      padding: 5px 0;
+    }
     input[type=text] {
-      font-size: 16px;
+      font-size: 14px;
     }
     input[type=button] {
       background-color: lightpink;
@@ -194,10 +199,9 @@ html {
   opacity: 0;
   z-index: 1;
   transition: 1s ease visibility, 1s ease opacity;
-}
-
-.shadow.showed {
-  visibility: visible;
-  opacity: 0.3;
-  z-index: 1;
+  &.showed {
+    visibility: visible;
+    opacity: 0.3;
+    z-index: 1;
+  }
 }

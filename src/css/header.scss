@@ -1,15 +1,12 @@
 .commonHeader {
-
   background: #36384c;
   width: 100%;
-
   .title {
     color: #61dafb;
     font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
-
   .logo {
     display: block;
     height: auto;
@@ -18,7 +15,6 @@
     padding: 50px 0;
     transition: 0.5s ease all;
   }
-
   .menu {
     position: absolute;
     z-index: 3;
@@ -29,8 +25,7 @@
     opacity: 0;
     transition: 0.5s ease all;
   }
-
-  * > .user {
+  & .userimg {
     position: absolute;
     top: 0;
     right: 0;
@@ -39,15 +34,13 @@
     margin: 13px;
     filter: invert(90%);
     cursor: pointer;
+    &.loggedIn {
+      width: 32px;
+      height: 32px;
+      margin: 8px;
+      filter: none;
+    }
   }
-
-  * > .user.loggedIn {
-    width: 32px;
-    height: 32px;
-    margin: 8px;
-    filter: none;
-  }
-
   ul.nav {
     background: #20232a;
     display: flex;
@@ -55,7 +48,6 @@
     justify-content: center;
     list-style: none;
   }
-
   .link {
     display: block;
     color: #fafafa;
@@ -67,32 +59,27 @@
       color: darken(#fafafa, 10%);
     }
   }
-}
-
-.commonHeader.thin {
-  .logo {
-    padding: 5px 0;
-    width: 123px;
+  &.thin {
+    .logo {
+      padding: 5px 0;
+      width: 123px;
+    }
+    .menu {
+      opacity: 1;
+    }
+    ul.nav {
+      position: absolute;
+      width: 200px;
+      left: -200px;
+      height: calc(100% - 50px);
+      background: #20232a;
+      display: block;
+      list-style: none;
+      transition: 0.5s ease all;
+      z-index: 2;
+    }
+    ul.nav.opened {
+      left: 0;
+    }
   }
-
-  .menu {
-    opacity: 1;
-  }
-
-  ul.nav {
-    position: absolute;
-    width: 200px;
-    left: -200px;
-    height: calc(100% - 50px);
-    background: #20232a;
-    display: block;
-    list-style: none;
-    transition: 0.5s ease all;
-    z-index: 2;
-  }
-
-  ul.nav.opened {
-    left: 0;
-  }
-
 }

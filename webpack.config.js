@@ -122,13 +122,13 @@ const config = {
               options: {
                 sourceMap: true,
               },
-            },
+            }/* ,
             {
               loader: 'sass-loader',
               options: {
                 sourceMap: true,
               },
-            },
+            }, */
           ],
         }),
       }, // end scss loader

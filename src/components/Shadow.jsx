@@ -10,7 +10,7 @@ class Shadow extends React.Component {
 	render() {
 		let classList = 'shadow';
 		classList += this.props.app.shadow ? " showed" : "";
-		return <div className={classList} onClick={()=> this.props.dispatch(appAction.shadowout())} />
+		return <div className={classList} onClick={()=> this.props.dispatch(appAction.shadowmenuout())} />
 	}
 }
 

@@ -15,46 +15,36 @@ class CommonHeader extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			menuOpened: false,
 			loginthin: false
 		};
 	}
 
 	loginroute(){
-		this.setState({loginthin:true}, ()=>{
-			this.setState({loginthin: false});
-		});
+		this.setState({loginthin:true}, () => this.setState({loginthin: false}));
 	}
 
 	menutoggle() {
-		this.setState({ menuOpened : !this.state.menuOpened }, ()=>{
-			if (this.state.menuOpened) {
-				this.props.dispatch(appAction.shadowin());
-			} else {
-				this.props.dispatch(appAction.shadowout());
-			}
-		});
-
+		this.props.dispatch(appAction.menutoggle());
+		this.props.dispatch(appAction.shadowtoggle());
 	}
 
 	menuclose() {
-		this.setState({ menuOpened : false });
-		this.props.dispatch(appAction.shadowout());
+		this.props.dispatch(appAction.shadowmenuout());
 	}
 
 	render() {
 		const thin = this.state.loginthin||window.location.pathname !== '/';
 		const userIcon = (this.props.user.status
-			? `http://calbum.sanguneo.com/upload/profiles/${this.props.user.signhash}`
+			? `http://hpserver.sanguneo.com/upload/profiles/${this.props.user.signhash}`
 			: user
 		);
 		return <header className={thin ? "commonHeader thin" : "commonHeader"}>
 			<img className="logo" src={hairpinLogo} alt="hairpin"/>
 			<img className="menu" src={menu} alt="menu" onClick={()=> this.menutoggle()}/>
 			<NavLink to="/login" className="user" activeClassName="active">
-				<img className={this.props.user.status ? "user loggedIn" : "user"} onClick={() => {this.loginroute()}} src={userIcon} alt="user"/>
+				<img className={this.props.user.status ? "userimg loggedIn" : "userimg"} onClick={() => {this.loginroute()}} src={userIcon} alt="user"/>
 			</NavLink>
-			<ul className={this.state.menuOpened ? "nav opened" : "nav"}>
+			<ul className={this.props.app.menuopened ? "nav opened" : "nav"}>
 				<li className="item">
 					<NavLink to="/" className="link" exact activeClassName="active" onClick={()=> this.menuclose()}>
 						메인

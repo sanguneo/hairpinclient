@@ -8,7 +8,6 @@ import Features from '../containers/Features';
 import Notice from '../containers/Notice';
 import Login from '../containers/Login';
 
-
 export default () => (
     <div>
         <CommonHeader />
