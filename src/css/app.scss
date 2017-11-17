@@ -152,7 +152,6 @@ html {
     border: 1px solid lightgray;
     transition: 0.5s ease width, 0.5s ease height;
   }
-
   .form, .info {
     display: flex;
     align-items: center;
@@ -176,10 +175,6 @@ html {
   }
 
   .info {
-    input {
-      width: 180px;
-      padding: 5px 0;
-    }
     input[type=text] {
       font-size: 14px;
     }
