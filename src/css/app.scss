@@ -30,6 +30,7 @@ html {
 }
 
 .features {
+  padding-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -43,6 +44,7 @@ html {
 }
 
 .notice {
+  padding-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -52,6 +54,7 @@ html {
     list-style-type: none;
     li {
       height: 50px;
+      cursor: pointer;
       &:nth-child(odd) {
         background-color: #f9f9f9;
       }
@@ -81,13 +84,14 @@ html {
     background-color: #fff;
     z-index: 3;
     opacity: 0;
-    transition: 1s ease visibility, 1s ease opacity;
+    transition: 0.5s ease visibility, 0.5s ease opacity;
     &.opened {
       opacity: 1;
       visibility: visible;
     }
     .closeBtn {
       position: absolute;
+      cursor: pointer;
       border: 1px solid #d9d9d9;
       border-radius: 15px;
       width: 30px;
@@ -127,6 +131,7 @@ html {
 }
 
 .login {
+  padding-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,67 +141,76 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .photo {
+      width: 300px;
+      height: 300px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid lightgray;
+      transition: 0.5s ease width, 0.5s ease height;
+    }
+    .form, .info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      input {
+        width: 250px;
+        text-align: center;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 10px 0;
+        margin: 5px 0;
+      }
+      input[type=button], input[type=submit] {
+        border: 0;
+        background-color: lightskyblue;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
     &.loggedin {
       flex-direction: row;
       .photo {
         width: 100px;
         height: 100px;
       }
+      .info {
+        .myCounts {
+          width: 100%;
+          & > div {
+            float: left;
+            margin: 2px 0;
+            width: 33%;
+            text-align: center;
+            .indi {
+              height: 25px;
+              font-weight: bold;
+              font-size:20px;
+            }
+            .label {
+              height: 15px;
+              font-family: Verdana;
+              font-size: 11px;
+            }
+          }
+        }
+        input, div {
+          width: 100%;
+        }
+        .username {
+          margin: 0 70px;
+          text-align: center;
+          font-weight: bold;
+        }
+        input[type=text] {
+          font-size: 14px;
+        }
+        input[type=button] {
+          background-color: lightpink;
+        }
+      }
     }
-  }
-  .photo {
-    width: 300px;
-    height: 300px;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-    transition: 0.5s ease width, 0.5s ease height;
-  }
-  .form, .info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    input {
-      width: 250px;
-      text-align: center;
-      border: 1px solid lightgray;
-      border-radius: 5px;
-      padding: 10px 0;
-      margin: 5px 0;
-    }
-    input[type=button], input[type=submit] {
-      border: 0;
-      background-color: lightskyblue;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  }
-
-  .info {
-    input[type=text] {
-      font-size: 14px;
-    }
-    input[type=button] {
-      background-color: lightpink;
-    }
-  }
-}
-
-.shadow {
-  position: absolute;
-  visibility: hidden;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  background-color: black;
-  opacity: 0;
-  z-index: 1;
-  transition: 1s ease visibility, 1s ease opacity;
-  &.showed {
-    visibility: visible;
-    opacity: 0.3;
-    z-index: 1;
   }
 }

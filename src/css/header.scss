@@ -41,13 +41,25 @@
       filter: none;
     }
   }
-  ul.nav {
-    background: #20232a;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
+
+  &.thin {
+    position: fixed;
+    .logo {
+      padding: 5px 0;
+      width: 123px;
+    }
+    .menu {
+      opacity: 1;
+    }
   }
+}
+
+.nav {
+  background: #20232a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
   .link {
     display: block;
     color: #fafafa;
@@ -60,26 +72,39 @@
     }
   }
   &.thin {
-    .logo {
-      padding: 5px 0;
-      width: 123px;
-    }
-    .menu {
-      opacity: 1;
-    }
-    ul.nav {
-      position: absolute;
-      width: 200px;
-      left: -200px;
-      height: calc(100% - 50px);
-      background: #20232a;
-      display: block;
-      list-style: none;
-      transition: 0.5s ease all;
-      z-index: 2;
-    }
-    ul.nav.opened {
+    position: fixed;
+    width: 200px;
+    top: 50px;
+    left: -200px;
+    height: calc(100% - 50px);
+    background: #20232a;
+    display: block;
+    list-style: none;
+    transition: 0.5s ease all;
+    z-index: 2;
+    &.opened {
       left: 0;
     }
+  }
+}
+
+.shadow {
+  position: fixed;
+  visibility: hidden;
+  top: 228.3px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0;
+  z-index: 1;
+  transition: 0.5s ease visibility, 0.5s ease opacity, 0.5s ease top;
+  &.showed {
+    visibility: visible;
+    opacity: 0.3;
+    z-index: 1;
+  }
+  &.thin {
+    top: 50px;
   }
 }

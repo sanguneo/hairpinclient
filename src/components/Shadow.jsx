@@ -9,7 +9,8 @@ class Shadow extends React.Component {
 	}
 	render() {
 		let classList = 'shadow';
-		classList += this.props.app.shadow ? " showed" : "";
+		classList += this.props.app.shadow ? ' showed' : '';
+		classList += window.location.pathname !== '/' ? ' thin' : '';
 		return <div className={classList} onClick={()=> this.props.dispatch(appAction.shadowmenuout())} />
 	}
 }

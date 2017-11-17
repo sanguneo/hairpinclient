@@ -14,13 +14,14 @@ import '../css/header.scss';
 class CommonHeader extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			loginthin: false
-		};
+		this.loginroute = this.loginroute.bind(this);
 	}
 
 	loginroute(){
-		this.setState({loginthin:true}, () => this.setState({loginthin: false}));
+		this.forceUpdate(()=>{
+			this.props.shadow.forceUpdate()
+			this.props.menu.forceUpdate()
+		});
 	}
 
 	menutoggle() {
@@ -28,12 +29,8 @@ class CommonHeader extends React.Component {
 		this.props.dispatch(appAction.shadowtoggle());
 	}
 
-	menuclose() {
-		this.props.dispatch(appAction.shadowmenuout());
-	}
-
 	render() {
-		const thin = this.state.loginthin||window.location.pathname !== '/';
+		const thin = window.location.pathname !== '/';
 		const userIcon = (this.props.user.status
 			? `http://hpserver.sanguneo.com/upload/profiles/${this.props.user.signhash}`
 			: user
@@ -42,25 +39,8 @@ class CommonHeader extends React.Component {
 			<img className="logo" src={hairpinLogo} alt="hairpin"/>
 			<img className="menu" src={menu} alt="menu" onClick={()=> this.menutoggle()}/>
 			<NavLink to="/login" className="user" activeClassName="active">
-				<img className={this.props.user.status ? "userimg loggedIn" : "userimg"} onClick={() => {this.loginroute()}} src={userIcon} alt="user"/>
+				<img className={this.props.user.status ? "userimg loggedIn" : "userimg"} onClick={this.loginroute} src={userIcon} alt="user"/>
 			</NavLink>
-			<ul className={this.props.app.menuopened ? "nav opened" : "nav"}>
-				<li className="item">
-					<NavLink to="/" className="link" exact activeClassName="active" onClick={()=> this.menuclose()}>
-						메인
-					</NavLink>
-				</li>
-				<li className="item">
-					<NavLink to="/features" className="link" activeClassName="active" onClick={()=> this.menuclose()}>
-						기능
-					</NavLink>
-				</li>
-				<li className="item">
-					<NavLink to="/notice" className="link" activeClassName="active" onClick={()=> this.menuclose()}>
-						공지사항
-					</NavLink>
-				</li>
-			</ul>
 		</header>;
 	}
 }
