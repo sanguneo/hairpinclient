@@ -9,12 +9,20 @@ import user from '../img/profile.png';
 class Vuser extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			signhash: '',
+			nickname : 'noname',
+			followersize: 0,
+			followingsize: 0,
+			designsize: 0,
+			_id: null
+		}
 	}
 
-	getUserInfo(signhash) {
-		/*axios.post(
-			'https://hpserver.sanguneo.com/user/login',
-			userinfo,
+	getUserInfo(signhash){
+		axios.get(
+			`http://hpserver.sanguneo.com/user/vuser/${signhash}`,
+			{},
 			{
 				headers: {
 					Accept: 'application/json',
@@ -22,36 +30,37 @@ class Vuser extends React.Component {
 				}
 			}
 		).then((response) => {
-			precallback();
 			if (response.data.message === 'success') {
-				const resUserinfo = {
-					token: response.data.token,
-					// eslint-disable-next-line no-underscore-dangle
-					_id: response.data._id,
-					email: response.data.email,
+				this.setState({
 					signhash: response.data.signhash,
-					name: response.data.nickname,
-					status: true
-				};
-				window.sessionStorage.setItem('hairpinToken', JSON.stringify(resUserinfo));
-				dispatch(login(resUserinfo));
+					nickname : response.data.nickname,
+					followersize: response.data.followersize,
+					followingsize: response.data.followingsize,
+					_id: response.data._id
+				},() => {
+					this.forceUpdate();
+				});
 			} else if (response.data.message === 'noaccount')  {
-				alert('사용자 정보가 존재하지 않습니다.\n가입하시겠습니까?')
-			} else if (response.data.message === 'invalidpw')  {
-				alert('패스워드를 다시 확인해주세요.');
+				alert('사용자 정보가 존재하지 않습니다.')
 			}
 		}).catch(e => {
 			console.log('error', e);
-		});*/
+		});
 	}
 
 	componentWillMount() {
-
+		let vuserhashonsession = window.sessionStorage.getItem('vuserhash');
+		if(this.props.vuser.signhash && this.props.vuser.signhash !== ''){
+			window.sessionStorage.setItem('vuserhash' ,this.props.vuser.signhash);
+			this.getUserInfo(this.props.vuser.signhash);
+		} else if(vuserhashonsession && vuserhashonsession !== ''){
+			this.getUserInfo(vuserhashonsession);
+		}
 	}
 
 	render() {
-		const userIcon = (this.props.vuser.signhash !== ''
-				? `http://hpserver.sanguneo.com/upload/profiles/${this.props.vuser.signhash}`
+		const userIcon = (this.state.signhash && this.state.signhash !== ''
+				? `http://hpserver.sanguneo.com/upload/profiles/${this.state.signhash}`
 				: user
 		);
 		return (
@@ -59,19 +68,19 @@ class Vuser extends React.Component {
 				<div className="container">
 					<img className="photo" src={userIcon} alt="profile" />
 					<div className="info">
-						<div className="username">{this.props.vuser.signhash ? this.props.vuser.signhash : 'noname'}</div>
+						<div className="username">{this.state.nickname ? this.state.nickname : 'noname'}</div>
 						<div className="myCounts">
-							<div className="follower">
-								<div className="indi">19</div>
+							<div className="designcnt">
+								<div className="indi">{this.state.designsize}</div>
 								<div className="label">designs</div>
 							</div>
-							<div className="following">
-								<div className="indi">19</div>
-								<div className="label">following</div>
-							</div>
-							<div className="designcnt">
-								<div className="indi">19</div>
+							<div className="follower">
+								<div className="indi">{this.state.followersize}</div>
 								<div className="label">follower</div>
+							</div>
+							<div className="following">
+								<div className="indi">{this.state.followingsize}</div>
+								<div className="label">following</div>
 							</div>
 						</div>
 					</div>
