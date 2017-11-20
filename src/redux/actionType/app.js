@@ -7,3 +7,6 @@ export const MENUCLOSE =  'MENUCLOSE';
 export const MENUTOGGLE =  'MENUTOGGLE';
 
 export const SHADOWMENUOUT = 'SHADOWMENUOUT';
+
+export const LOADING = 'LOADING';
+export const LOADED = 'LOADED';

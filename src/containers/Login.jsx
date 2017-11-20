@@ -4,18 +4,26 @@ import {connect} from 'react-redux';
 import user from '../img/profile.png';
 
 import * as userAction from '../redux/actions/user';
+import * as appAction from '../redux/actions/app';
 
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			designsize: 0,
+			followersize: 0,
+			followingsize: 0,
+		}
 		this.loginInfo = {email: '', password: ''};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleInputReset = this.handleInputReset.bind(this);
 	}
 
 	login() {
+		this.props.dispatch(appAction.loading());
 		this.props.dispatch(userAction.loginAsync(this.loginInfo, () => {
-			this.handleInputReset()
+			this.handleInputReset();
+			this.props.dispatch(appAction.loaded());
 		}));
 	}
 
@@ -25,6 +33,7 @@ class Login extends React.Component {
 			this.handleInputReset();
 		});
 	}
+
 	handleInputReset() {
 		this.loginInfo.email = '';
 		this.loginInfo.password = '';
@@ -52,15 +61,15 @@ class Login extends React.Component {
 						<div className="username">{this.props.user.name}</div>
 						<div className="myCounts">
 							<div className="follower">
-								<div className="indi">19</div>
+								<div className="indi">{this.props.user.designsize}</div>
 								<div className="label">designs</div>
 							</div>
 							<div className="following">
-								<div className="indi">19</div>
+								<div className="indi">{this.props.user.followersize}</div>
 								<div className="label">following</div>
 							</div>
 							<div className="designcnt">
-								<div className="indi">19</div>
+								<div className="indi">{this.props.user.followingsize}</div>
 								<div className="label">follower</div>
 							</div>
 						</div>
@@ -72,6 +81,6 @@ class Login extends React.Component {
 	}
 }
 
-const mapStateToProps = state => ({user: state.user});
+const mapStateToProps = state => ({user: state.user, app: state.app});
 
 export default connect (mapStateToProps) (Login);

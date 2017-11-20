@@ -21,3 +21,10 @@ export function menutoggle() {
 export function shadowmenuout() {
 	return {type: types.SHADOWMENUOUT};
 }
+
+export function loading() {
+	return {type: types.LOADING};
+}
+export function loaded() {
+	return {type: types.LOADED};
+}

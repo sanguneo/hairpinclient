@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {NavLink, Link} from 'react-router-dom';
 
 import * as appAction from '../redux/actions/app';
-import * as vuserAction from '../redux/actions/vuser';
+// import * as vuserAction from '../redux/actions/vuser';
 
 import '../css/header.scss';
 
@@ -38,8 +38,8 @@ class Menu extends React.Component {
 				</NavLink>
 			</li>
 			<li className="item">
-				<NavLink to="/vuser" className="link" activeClassName="active" onClick={()=> {
-					this.props.dispatch(vuserAction.vuserset({signhash: '9f639b15-2cbd-59aa-a5f8-26315dc08b70'}));
+				<NavLink to="/vuserlist" className="link" activeClassName="active" onClick={()=> {
+					//this.props.dispatch(vuserAction.vuserset({signhash: '9f639b15-2cbd-59aa-a5f8-26315dc08b70'}));
 					this.menuclose();
 				}}>
 					vuser

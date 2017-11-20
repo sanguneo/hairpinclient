@@ -264,6 +264,50 @@ html {
         text-align: center;
         font-weight: bold;
       }
+      input[type=button]{
+        width: 200px;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px 0;
+        margin: 5px 0;
+        border: 0;
+        background-color: lightskyblue;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      input[type=button][value=Unfollow]{
+        background-color: lightpink;
+      }
     }
+  }
+}
+.vuserlist {
+  padding-top: 50px;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.vuseritem {
+  float: left;
+  flex: auto;
+  width: 160px;
+  height: 150px;
+  transition: 1s ease all;
+  .photo {
+    width: 100px;
+    height: 100px;
+    margin: 0 30px;
+  }
+  .username {
+    width: 100px;
+    height: 50px;
+    margin: 0 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
   }
 }

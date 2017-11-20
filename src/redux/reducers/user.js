@@ -8,7 +8,10 @@ const initialState = Immutable({
 	_id: '',
 	email: '',
 	signhash: '',
-	name: ''
+	name: '',
+	designsize: 0,
+	followersize: 0,
+	followingsize: 0
 });
 
 export default function user(state = initialState, action = {}) {
@@ -27,6 +30,8 @@ export default function user(state = initialState, action = {}) {
 				signhash: '',
 				name: ''
 			});
+		case types.USERUPDATE :
+			return Object.assign({}, state, action.userstat);
 		default:
 			return state;
 	}

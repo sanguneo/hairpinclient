@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-import * as vuserAction from '../redux/actions/vuser';
 
+import * as appAction from '../redux/actions/app';
 import user from '../img/profile.png';
 
 class Vuser extends React.Component {
@@ -12,21 +12,23 @@ class Vuser extends React.Component {
 		this.state = {
 			signhash: '',
 			nickname : 'noname',
+			amIfollowing: false,
+			designsize: 0,
 			followersize: 0,
 			followingsize: 0,
-			designsize: 0,
 			_id: null
 		}
 	}
 
 	getUserInfo(signhash){
+		this.props.dispatch(appAction.loading());
 		axios.get(
 			`http://hpserver.sanguneo.com/user/vuser/${signhash}`,
-			{},
 			{
-				headers: {
+				headers : {
 					Accept: 'application/json',
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					nekotnipriah: this.props.user.token ? this.props.user.token : 'none'
 				}
 			}
 		).then((response) => {
@@ -34,11 +36,14 @@ class Vuser extends React.Component {
 				this.setState({
 					signhash: response.data.signhash,
 					nickname : response.data.nickname,
+					amIfollowing : response.data.amIfollowing,
+					designsize: response.data.designsize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 					_id: response.data._id
 				},() => {
-					this.forceUpdate();
+					this.props.dispatch(appAction.loaded());
+					//this.forceUpdate();
 				});
 			} else if (response.data.message === 'noaccount')  {
 				alert('사용자 정보가 존재하지 않습니다.')
@@ -48,13 +53,41 @@ class Vuser extends React.Component {
 		});
 	}
 
+	sendFollow(){
+		this.props.dispatch(appAction.loading());
+		axios.post(
+			`http://hpserver.sanguneo.com/user/${(!this.state.amIfollowing ? 'follow' : 'unfollow')}`,
+			{signhash: this.state.signhash},
+			{
+				headers : {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+					nekotnipriah: this.props.user.token ? this.props.user.token : 'none'
+				}
+			}
+		).then((response) => {
+			if (response.data.message === 'success') {
+				const stateQuery =
+					! this.state.amIfollowing
+					? {followersize: this.state.followersize + 1}
+					: {followersize: this.state.followersize - 1};
+				stateQuery.amIfollowing = !this.state.amIfollowing;
+				this.setState(stateQuery, () => {
+					this.props.dispatch(appAction.loaded());
+				});
+			}
+		}).catch(e => {
+			console.log('error', e);
+		});
+	}
+
 	componentWillMount() {
-		let vuserhashonsession = window.sessionStorage.getItem('vuserhash');
-		if(this.props.vuser.signhash && this.props.vuser.signhash !== ''){
+		const vuserhashOnSession = window.sessionStorage.getItem('vuserhash');
+		if(this.props.vuser.signhash && this.props.vuser.signhash !== '') {
 			window.sessionStorage.setItem('vuserhash' ,this.props.vuser.signhash);
 			this.getUserInfo(this.props.vuser.signhash);
-		} else if(vuserhashonsession && vuserhashonsession !== ''){
-			this.getUserInfo(vuserhashonsession);
+		} else if(vuserhashOnSession && vuserhashOnSession !== '') {
+			this.getUserInfo(vuserhashOnSession);
 		}
 	}
 
@@ -83,6 +116,7 @@ class Vuser extends React.Component {
 								<div className="label">following</div>
 							</div>
 						</div>
+						<input type="button" value={this.state.amIfollowing ? 'Unfollow' : 'Follow'} onClick={()=> {this.sendFollow()}}/>
 					</div>
 				</div>
 			</div>

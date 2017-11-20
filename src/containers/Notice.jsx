@@ -28,10 +28,13 @@ class Notice extends React.Component {
 	}
 
 	getNotices() {
+		this.props.dispatch(appAction.loading());
 		axios.get('http://hpserver.sanguneo.com/notice/list').then((response) => {
 			if(response.data.code === 310) {
 				this.setState({
 					rows: response.data.notice.map((e) => <li key={e._id} onClick={()=> {this.getNotice(e._id)}}><div>{e.title}</div><div>{Util.isoFormatter(e.regDate)}</div></li>)
+				}, () => {
+					this.props.dispatch(appAction.loaded());
 				});
 			} else {
 				console.log('error');

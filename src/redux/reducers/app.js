@@ -5,7 +5,8 @@ import * as types from '../actionType/app';
 const initialState = Immutable({
 	shadow : false,
 	menuopened : false,
-	headerthin : false
+	headerthin : false,
+	loading : false
 });
 
 export default function app(state = initialState, action = {}) {
@@ -38,6 +39,14 @@ export default function app(state = initialState, action = {}) {
 		case types.MENUTOGGLE :
 			return Object.assign({}, state, {
 				menuopened: !state.menuopened
+			});
+		case types.LOADING :
+			return Object.assign({}, state, {
+				loading: true
+			});
+		case types.LOADED :
+			return Object.assign({}, state, {
+				loading: false
 			});
 		default:
 			return state;
