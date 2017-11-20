@@ -60,17 +60,17 @@ class Login extends React.Component {
 					<div className="info">
 						<div className="username">{this.props.user.name}</div>
 						<div className="myCounts">
-							<div className="follower">
+							<div className="designcnt">
 								<div className="indi">{this.props.user.designsize}</div>
 								<div className="label">designs</div>
 							</div>
-							<div className="following">
+							<div className="follower">
 								<div className="indi">{this.props.user.followersize}</div>
-								<div className="label">following</div>
-							</div>
-							<div className="designcnt">
-								<div className="indi">{this.props.user.followingsize}</div>
 								<div className="label">follower</div>
+							</div>
+							<div className="following">
+								<div className="indi">{this.props.user.followingsize}</div>
+								<div className="label">following</div>
 							</div>
 						</div>
 						<input type="button" value="Logout" onClick={()=> {this.logout()}}/>
