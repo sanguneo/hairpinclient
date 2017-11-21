@@ -26,18 +26,18 @@ class Menu extends React.Component {
 				</NavLink>
 			</li>
 			<li className="item">
-				<NavLink to="/features" className="link" activeClassName="active" onClick={this.menuclose}>
-					기능
-				</NavLink>
-			</li>
-			<li className="item">
-				<NavLink to="/notice" className="link" activeClassName="active" onClick={this.menuclose}>
-					공지사항
+				<NavLink to="" className="link" activeClassName="active" onClick={(e) => {e.preventDefault();alert('준비중입니다!');}/*this.menuclose*/}>
+					레시피찾기
 				</NavLink>
 			</li>
 			<li className="item">
 				<NavLink to="/vuserlist" className="link" activeClassName="active" onClick={this.menuclose}>
 					회원찾기
+				</NavLink>
+			</li>
+			<li className="item">
+				<NavLink to="/notice" className="link" activeClassName="active" onClick={this.menuclose}>
+					공지사항
 				</NavLink>
 			</li>
 		</ul>);

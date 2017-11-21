@@ -6,7 +6,6 @@ import CommonHeader from '../components/CommonHeader';
 import Menu from '../components/Menu';
 import Shadow from '../components/Shadow';
 import Home from '../containers/Home';
-import Features from '../containers/Features';
 import Notice from '../containers/Notice';
 import Login from '../containers/Login';
 import Vuser from '../containers/Vuser';
@@ -22,7 +21,6 @@ export default () => (
         <Switch>
             <Route exact path="/" component={Home} />
 			<Route exact path="/login" component={Login} />
-			<Route exact path="/features" component={Features} />
             <Route exact path="/notice" component={Notice} />
 			<Route exact path="/vuser" component={Vuser} />
 			<Route exact path="/vuserlist" component={Vuserlist} />
