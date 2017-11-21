@@ -4,13 +4,9 @@
 'use strict';
 
 export default {
-	dateFormatter: function(timestamp, format = 'Y-M-D h:i') {
-		let date = new Date(parseInt(timestamp));
-		return this.formatter(date, format);
-	},
-	isoFormatter: function(isodate, format = 'Y-M-D h:i') {
-		let date = new Date(isodate);
-		return this.formatter(date, format);
+	pad: (num, size = 2) => {
+		let s = '0000' + num;
+		return s.substr(s.length - size);
 	},
 	formatter: function(date, format = 'Y-M-D h:i') {
 		if (date.getTimezoneOffset() === 0) {
@@ -24,12 +20,22 @@ export default {
 			.replace('i', this.pad(date.getMinutes()))
 			.replace('s', this.pad(date.getSeconds()));
 	},
-	pad: (num, size = 2) => {
-		let s = '0000' + num;
-		return s.substr(s.length - size);
+	dateFormatter: function(timestamp, format = 'Y-M-D h:i') {
+		let date = new Date(parseInt(timestamp));
+		return this.formatter(date, format);
+	},
+	isoFormatter: function(isodate, format = 'Y-M-D h:i') {
+		let date = new Date(isodate);
+		return this.formatter(date, format);
 	},
 	emailcheck: (email) =>{
 		let regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-		return (email != '' && email != 'undefined' && regex.test(email));
+		return (typeof(email) !== 'undefined' && email !== '' && regex.test(email));
+	},
+	readablized(number) {
+		if(number < 1000) return number;
+		const s = ['', 'k', 'm', 'g'];
+		let e = Math.floor(Math.log(number) / Math.log(1000));
+		return (number / (1000 ** e)).toFixed(1) + " " + s[e];
 	}
 };

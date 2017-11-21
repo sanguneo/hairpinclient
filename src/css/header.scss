@@ -17,11 +17,11 @@
   }
   .menu {
     position: absolute;
+    visibility: hidden;
     z-index: 3;
     top: 0;
     padding: 13px;
     filter: invert(90%);
-    cursor: pointer;
     opacity: 0;
     transition: 0.5s ease all;
   }
@@ -44,16 +44,18 @@
 
   &.thin {
     position: fixed;
+    z-index: 4;
     .logo {
       padding: 5px 0;
       width: 123px;
     }
     .menu {
+      visibility: visible;
       opacity: 1;
+      cursor: pointer;
     }
   }
 }
-
 .nav {
   background: #20232a;
   display: flex;
@@ -85,48 +87,5 @@
     &.opened {
       left: 0;
     }
-  }
-}
-
-.shadow {
-  position: fixed;
-  visibility: hidden;
-  top: 228.3px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: black;
-  opacity: 0;
-  z-index: 1;
-  transition: 0.5s ease visibility, 0.5s ease opacity, 0.5s ease top;
-  &.showed {
-    visibility: visible;
-    opacity: 0.3;
-    z-index: 1;
-  }
-  &.thin {
-    top: 50px;
-  }
-}
-
-.loading {
-  position: fixed;
-  display: none;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: -1;
-  &.showed {
-    display: block;
-    z-index: 5;
-  }
-  img {
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    top: calc(50% - 32px);
-    left: calc(50% - 32px);
   }
 }

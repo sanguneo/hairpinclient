@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import * as appAction from '../redux/actions/app';
 
+import '../css/@shadow.scss';
+
 class Shadow extends React.Component {
 	constructor(props) {
 		super(props);

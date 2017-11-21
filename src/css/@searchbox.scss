@@ -1,0 +1,23 @@
+.searchbox {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  input {
+    width: 50%;
+    max-width: 320px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+    outline: 5px solid #36384c;
+  }
+  .searchBtn {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: -30px;
+    margin-bottom: -8px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACZElEQVRYR+3WSajPURTA8c9DkpXMw0YokowLUuxMKUM2lIjY2FhIiQWyUSTJRiGykEikKIpkilKWKEIyJRkXMnbq/nX7+Q+/33u93uad3e93zzn3e890b5sulrYu3l83QNkI9MUKLMZUDMEvvMRdnMaF9K9SVssArMVuDGrh+RE24GoVgmYAvXAYqys4/I0t2FPWphnAsQabR+jf4Q+GUbeQN+JAGYhGAGtwtODgOXbiLD6ltUhLRGgb+mX6PzED91tB1AOIgntWyPl1LMHHBg5H4grGZOs3MLs9AFF0RzLDF5jUZPOa6lg8QJ/Mdkr615CjXgTOY1Fmsa4A1OxQ+xH5r8mOlLZKANHbI5JFVHX/LOetIjoTtzKlmA35Yf6zrxeBH4gWDHmN4a12zdYH4H32fQ/Tm9nXA/iO3snoVRaNMhwxId90FOAJRiUn0euDC6dqBjIHlzOFaNllVSNwEsszo03YV+b4OIGVme5m7K0KEMRnMqMPqQ2jOJtJ9Pw19MgKeHSaKZW6oCceFoZKfC/E0waeZuFc6piaSnwvbRW5RqN4Pi4W5vw3HMQpPE6dEgMqxvaq7OS1PUN/AWIiVopATXk7YpB0RL4miJuNnLR6D2zFrjqnqwIVEPNwu55RK4CwifzGiI2XUCOJdo2cxw0YV3RRviSIO8WFMgA1mwCJsToNQ9N7IK7ocFqri3GpE2K9KJ8xNz3h/q1VASgb9vEJIgZYUd4m+E4FCOcTEsTAjCAutrjqj+dUnRGBmv+J6YEaF1TUyPp613pnAgTIZFxK7XyovV1QNvft0uvsCLSE6gb4C9ysayFAa2zyAAAAAElFTkSuQmCC) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+}

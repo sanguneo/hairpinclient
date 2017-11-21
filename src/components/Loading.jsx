@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import * as appAction from '../redux/actions/app';
 
+import '../css/@loading.scss';
+
 import loading from '../img/loading.svg';
 
 class Loading extends React.Component {
@@ -12,6 +14,7 @@ class Loading extends React.Component {
 	render() {
 		let classList = 'loading';
 		classList += this.props.app.loading ? ' showed' : '';
+		classList += window.location.pathname !== '/' ? ' thin' : '';
 		return (<div className={classList} onClick={()=> this.props.dispatch(appAction.shadowmenuout())}>
 			<img src={loading} />
 		</div>)

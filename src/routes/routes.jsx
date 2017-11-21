@@ -18,7 +18,7 @@ export default () => (
         <CommonHeader menu={this.menu} shadow={this.shadow}/>
         <Menu ref={ref => this.menu = ref}/>
         <Shadow ref={ref => this.shadow = ref}/>
-		<Loading/>
+		<Loading />
         <Switch>
             <Route exact path="/" component={Home} />
 			<Route exact path="/login" component={Login} />

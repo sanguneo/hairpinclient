@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import {NavLink} from 'react-router-dom';
 
+
 import * as appAction from '../redux/actions/app';
+
+import '../css/header.scss';
 
 import hairpinLogo from '../img/logo.png';
 import menu from '../img/menu.svg';

@@ -1,6 +1,9 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 *,
 *::after,
 *::before {
+  font-family: 'Noto Sans KR', sans-serif;
   box-sizing: border-box;
   border: 0;
   margin: 0;
@@ -82,7 +85,7 @@ html {
     height: 85%;
     border: 10px solid #e9e9e9;
     background-color: #fff;
-    z-index: 3;
+    z-index: 4;
     opacity: 0;
     transition: 0.5s ease visibility, 0.5s ease opacity;
     &.opened {
@@ -98,11 +101,8 @@ html {
       height: 30px;
       top: -20px;
       right: -20px;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAFVBMVEVMaXEAAAAAAAAAAAAAAAAAAAAAAACpf3wfAAAABnRSTlMA8jg8732z7iq0AAABEUlEQVRIx9XVMRKDIBAFUAfHC1BYxyIHoMgFOIGTIr0zkfsfIUZhYXf/0muFiM8R97vDcJvjjSZfdThtD319nFcaf5LXC0LaCUhJE+Oc0kpA0kQ4JncCNPEHCuHOsddA+ua7Fk1cQMxngGAAIDgACAEoQgKKUIAgNCAIADACAYyAQENgoCEMgAgLIMIECmEChbCBTNhAJSyAiGgG7CI2E8ib2FkQrkf4PtAhQnlN3wdMItSt9jYQF5PIn9FZBNWBRVAdGERTSJhoCgkSrBIRwSoREKKUNSFKWREqC5JQWRAECBMnQJgYAdPYEhPKgmt+xefPPKKM7LUd6DC5ph0cREQx22tLQml0TUvCTe15n6b8A504vKomVCNkAAAAAElFTkSuQmCC');
-      background-color: #fff;
+      background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAFVBMVEVMaXEAAAAAAAAAAAAAAAAAAAAAAACpf3wfAAAABnRSTlMA8jg8732z7iq0AAABEUlEQVRIx9XVMRKDIBAFUAfHC1BYxyIHoMgFOIGTIr0zkfsfIUZhYXf/0muFiM8R97vDcJvjjSZfdThtD319nFcaf5LXC0LaCUhJE+Oc0kpA0kQ4JncCNPEHCuHOsddA+ua7Fk1cQMxngGAAIDgACAEoQgKKUIAgNCAIADACAYyAQENgoCEMgAgLIMIECmEChbCBTNhAJSyAiGgG7CI2E8ib2FkQrkf4PtAhQnlN3wdMItSt9jYQF5PIn9FZBNWBRVAdGERTSJhoCgkSrBIRwSoREKKUNSFKWREqC5JQWRAECBMnQJgYAdPYEhPKgmt+xefPPKKM7LUd6DC5ph0cREQx22tLQml0TUvCTe15n6b8A504vKomVCNkAAAAAElFTkSuQmCC) no-repeat center;
       background-size: 60%;
-      background-position: center;
-      background-repeat: no-repeat;
     }
     .title {
       width: calc(100% - 20px);
@@ -185,11 +185,13 @@ html {
             margin: 2px 0;
             width: 33%;
             text-align: center;
+
             .indi {
               height: 25px;
               font-weight: bold;
-              font-size:20px;
+              font-size: 20px;
             }
+
             .label {
               height: 15px;
               font-family: Verdana;
@@ -197,16 +199,20 @@ html {
             }
           }
         }
+
         input, div {
           width: 100%;
         }
+
         .username {
           text-align: center;
           font-weight: bold;
         }
+
         input[type=text] {
           font-size: 14px;
         }
+
         input[type=button] {
           background-color: lightpink;
         }
@@ -284,30 +290,39 @@ html {
 }
 .vuserlist {
   padding-top: 50px;
-  .container {
+  .vuserresults {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    list-style: none;
   }
-}
+  .vuseritem {
+    width: 160px;
+    height: 150px;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: dimgray;
+    }
+    .photo {
+      width: 100px;
+      height: 100px;
+      margin: 0 30px;
+      border-radius: 5px;
+    }
+    .username {
+      width: 100px;
+      height: 50px;
+      margin: 0 30px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
 
-.vuseritem {
-  float: left;
-  flex: auto;
-  width: 160px;
-  height: 150px;
-  transition: 1s ease all;
-  .photo {
-    width: 100px;
-    height: 100px;
-    margin: 0 30px;
-  }
-  .username {
-    width: 100px;
-    height: 50px;
-    margin: 0 30px;
+  .noresult {
+    margin-top: 10%;
     text-align: center;
-    font-weight: bold;
-    font-size: 14px;
   }
+
 }

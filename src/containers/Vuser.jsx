@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 import * as appAction from '../redux/actions/app';
+import Util from '../services/util_svc';
 import user from '../img/profile.png';
 
 class Vuser extends React.Component {
@@ -42,7 +43,7 @@ class Vuser extends React.Component {
 					followingsize: response.data.followingsize,
 					_id: response.data._id
 				},() => {
-					this.props.dispatch(appAction.loaded());
+					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 					//this.forceUpdate();
 				});
 			} else if (response.data.message === 'noaccount')  {
@@ -104,15 +105,15 @@ class Vuser extends React.Component {
 						<div className="username">{this.state.nickname ? this.state.nickname : 'noname'}</div>
 						<div className="myCounts">
 							<div className="designcnt">
-								<div className="indi">{this.state.designsize}</div>
+								<div className="indi">{Util.readablized(this.state.designsize)}</div>
 								<div className="label">designs</div>
 							</div>
 							<div className="follower">
-								<div className="indi">{this.state.followersize}</div>
+								<div className="indi">{Util.readablized(this.state.followersize)}</div>
 								<div className="label">follower</div>
 							</div>
 							<div className="following">
-								<div className="indi">{this.state.followingsize}</div>
+								<div className="indi">{Util.readablized(this.state.followingsize)}</div>
 								<div className="label">following</div>
 							</div>
 						</div>
