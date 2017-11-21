@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router';
 import axios from 'axios';
 
 import * as appAction from '../redux/actions/app';
@@ -12,9 +13,11 @@ class Vuserlist extends React.Component {
 		this.state = {
 			queryString: '',
 			lastQueryString: '#undefined',
-			items: []
+			items: [],
+			goToLogin: false
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
+
 	}
 
 	handleInputChange(event) {
@@ -25,6 +28,13 @@ class Vuserlist extends React.Component {
 	}
 
 	searchUser(queryarg) {
+		if (!this.props.user.token || this.props.user.token === ''){
+			alert('로그인 되어있지 않습니다.\n로그인페이지로 이동합니다.')
+			this.setState({
+				goToLogin: true
+			});
+			return;
+		}
 		const query = queryarg || '';
 		if (this.state.lastQueryString !== query) {
 			this.setState({lastQueryString : query});
@@ -47,11 +57,14 @@ class Vuserlist extends React.Component {
 					items: response.data.user.map(
 						(itemSrc) => <Vuseritem key={itemSrc._id} name={itemSrc.nickname} signhash={itemSrc.signhash} />
 					)
+				}, () => {
+					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				});
-				setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 			} else {
+				setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				console.log('error')
 			}
+
 		}).catch(e => {
 			console.log('error', e);
 		});
@@ -62,6 +75,9 @@ class Vuserlist extends React.Component {
 	}
 
 	render() {
+		if(this.state.goToLogin) {
+			return <Redirect push to="/login" />;
+		}
 		return (
 			<div className="vuserlist">
 				<div className="container">

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router';
 import axios from 'axios';
 
 
@@ -17,11 +18,19 @@ class Vuser extends React.Component {
 			designsize: 0,
 			followersize: 0,
 			followingsize: 0,
-			_id: null
+			_id: null,
+			goToLogin: false
 		}
 	}
 
 	getUserInfo(signhash){
+		if (!this.props.user.token || this.props.user.token === ''){
+			alert('로그인 되어있지 않습니다.\n로그인페이지로 이동합니다.');
+			this.setState({
+				goToLogin: true
+			});
+			return;
+		}
 		this.props.dispatch(appAction.loading());
 		axios.get(
 			`http://hpserver.sanguneo.com/user/vuser/${signhash}`,
@@ -47,6 +56,7 @@ class Vuser extends React.Component {
 					//this.forceUpdate();
 				});
 			} else if (response.data.message === 'noaccount')  {
+				setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				alert('사용자 정보가 존재하지 않습니다.')
 			}
 		}).catch(e => {
@@ -93,6 +103,9 @@ class Vuser extends React.Component {
 	}
 
 	render() {
+		if(this.state.goToLogin) {
+			return <Redirect push to="/login" />;
+		}
 		const userIcon = (this.state.signhash && this.state.signhash !== ''
 				? `http://hpserver.sanguneo.com/upload/profiles/${this.state.signhash}`
 				: user
