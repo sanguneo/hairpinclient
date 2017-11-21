@@ -18,7 +18,7 @@ class Menu extends React.Component {
 	render() {
 		let classList = 'nav';
 		classList += window.location.pathname !== '/' ? ' thin' : '';
-		classList += this.props.app.menuopened ? ' opened' : ''
+		classList += this.props.app.menuopened ? ' opened' : '';
 		return (<ul className={classList}>
 			<li className="item">
 				<NavLink to="/" className="link" exact activeClassName="active" onClick={this.menuclose}>

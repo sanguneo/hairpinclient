@@ -42,6 +42,12 @@ class Login extends React.Component {
 		this.loginInfo[event.target.name]= event.target.value;
 	}
 
+	keyPress(e){
+		if(e.keyCode === 13){
+			this.login();
+		}
+	}
+
 	render() {
 		const userIcon = (this.props.user.token
 			? `http://hpserver.sanguneo.com/upload/profiles/${this.props.user.signhash}`
@@ -52,8 +58,10 @@ class Login extends React.Component {
 				<div className={this.props.user.status ? "container loggedin" : "container"}>
 					<img className="photo" src={userIcon} alt="profile" />
 					{!this.props.user.status? <form className="form">
-						<input type="email" name="email" placeholder="E-MAIL 입력" onChange={this.handleInputChange}/>
-						<input type="password" name="password" placeholder="PASSWORD 입력" onChange={this.handleInputChange}/>
+						<input type="email" name="email" placeholder="E-MAIL 입력"
+							   onChange={this.handleInputChange} onKeyDown={(e) => {this.keyPress(e)}}/>
+						<input type="password" name="password" placeholder="PASSWORD 입력"
+							   onChange={this.handleInputChange} onKeyDown={(e) => {this.keyPress(e)}}/>
 						<input type="button" value="Login" onClick={() => this.login()}/>
 					</form> : null}
 					{!this.props.user.status? null :
