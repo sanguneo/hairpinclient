@@ -19,7 +19,6 @@ export default () => (
         <Menu ref={ref => this.menu = ref}/>
         <Shadow ref={ref => this.shadow = ref}/>
 		<Loading />
-		<GoogleBottomAd />
         <Switch>
             <Route exact path="/" component={Home} />
 			<Route exact path="/login" component={Login} />
@@ -28,6 +27,6 @@ export default () => (
 			<Route exact path="/vuserlist" component={Vuserlist} />
             <Route render={() => <h1 style={{position: 'absolute', top: 'calc(50% - 20px)', left: 'calc(50% - 90px)'}}>Not Found :(</h1>} />
         </Switch>
-
+		<GoogleBottomAd />
     </div>
 );
