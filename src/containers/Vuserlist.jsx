@@ -78,7 +78,7 @@ class Vuserlist extends React.Component {
 		const remains = columns - (this.state.items.length % columns);
 		const fillers = [];
 		for (let fillerIdx = 0; fillerIdx < remains; fillerIdx++)
-			fillers.push(<li key={'fake_'+fillerIdx} className="vuseritemfill" />);
+			fillers.push(<li key={`fake_${fillerIdx}`} className="vuseritemfill" />);
 		this.setState({fillers});
 	}
 
