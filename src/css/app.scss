@@ -176,6 +176,7 @@ html {
         width: 100px;
         height: 100px;
       }
+      margin-right: 10px;
       .info {
         width: 200px;
         .myCounts {
@@ -246,6 +247,7 @@ html {
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      margin-right: 10px;
       .myCounts {
         width: 100%;
         & > div {
