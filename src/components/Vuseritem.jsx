@@ -6,6 +6,9 @@ import {Link} from 'react-router-dom';
 import * as vuserAction from '../redux/actions/vuser';
 
 class Vuseritem extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 	render() {
 		return (<li className="vuseritem">
 			<Link to="/vuser" className="link" onClick={()=> {
