@@ -11,7 +11,9 @@ class Vuseritem extends React.Component {
 	}
 	render() {
 		return (<li className="vuseritem">
-			<Link to="/vuser" className="link" onClick={()=> { this.props.dispatch(vuserAction.vuserset({signhash: this.props.signhash}));}}>
+			<Link to="/vuser" className="link" onClick={()=> {
+				this.props.dispatch(vuserAction.vuserset({signhash: this.props.signhash}));
+			}}>
 				<img className="photo" src={`http://hpserver.sanguneo.com/upload/profiles/${this.props.signhash}`} alt="profile" />
 				<div className="username">{this.props.name}</div>
 			</Link>
