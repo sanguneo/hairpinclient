@@ -14,8 +14,8 @@ class GoogleBottomAd extends React.Component {
 		classList += this.props.app.bottomad ? ' showed' : '';
 		return (<div className={classList}>
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-				 style="display:inline-block;width:320px;height:50px"
+			<ins className="adsbygoogle"
+				 style={{display:'inline-block',width:320 + 'px',height:50 + 'px'}}
 				 data-ad-client="ca-pub-4210320191405594"
 				 data-ad-slot="7313477468"></ins>
 			<script>
