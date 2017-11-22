@@ -6,7 +6,6 @@ import axios from 'axios';
 import * as appAction from '../redux/actions/app';
 import Vuseritem from '../components/Vuseritem';
 import Searchbox from '../components/Searchbox';
-import usericon from '../img/user.svg';
 
 class Vuserlist extends React.Component {
 	constructor(props) {
