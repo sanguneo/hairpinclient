@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as vuserAction from '../redux/actions/vuser';
 
@@ -19,6 +19,10 @@ class Vuseritem extends React.Component {
 			</Link>
 		</li>)
 	}
+}
+Vuseritem.propTypes = {
+	name: PropTypes.string.isRequired,
+	signhash: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({app: state.app});
