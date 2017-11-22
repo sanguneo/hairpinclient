@@ -22,11 +22,11 @@ class GoogleBottomAd extends React.Component {
 		let classList = 'googlebottomad';
 		classList += this.props.app.bottomad ? ' showed' : '';
 		return (<div className={classList}>
-			<div className="closeBtn" onClick={() => {this.hide()}}></div>
+			<div className="closeBtn" onClick={() => {this.hide()}} />
 			<ins className="adsbygoogle"
-				 style={{display:'inline-block', width: 320 + 'px', height: 50 + 'px'}}
+				 style={{display:'inline-block', width: `320px`, height: `50px`}}
 				 data-ad-client="ca-pub-4210320191405594"
-				 data-ad-slot="7313477468"></ins>
+				 data-ad-slot="7313477468" />
 		</div>);
 	}
 }
