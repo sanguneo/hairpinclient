@@ -48,6 +48,13 @@ class Login extends React.Component {
 		}
 	}
 
+	componentWillMount() {
+		this.props.dispatch(appAction.loading());
+		this.props.dispatch(userAction.updateAsync(this.loginInfo, () => {
+			this.props.dispatch(appAction.loaded());
+		}));
+	}
+
 	render() {
 		const userIcon = (this.props.user.token
 			? `http://hpserver.sanguneo.com/upload/profiles/${this.props.user.signhash}`
