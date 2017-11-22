@@ -6,7 +6,8 @@ const initialState = Immutable({
 	shadow : false,
 	menuopened : false,
 	headerthin : false,
-	loading : false
+	loading : false,
+	bottomad : true
 });
 
 export default function app(state = initialState, action = {}) {
@@ -47,6 +48,14 @@ export default function app(state = initialState, action = {}) {
 		case types.LOADED :
 			return Object.assign({}, state, {
 				loading: false
+			});
+		case types.BOTTOMADSHOW :
+			return Object.assign({}, state, {
+				bottomad: true
+			});
+		case types.BOTTOMADHIDE :
+			return Object.assign({}, state, {
+				bottomad: false
 			});
 		default:
 			return state;

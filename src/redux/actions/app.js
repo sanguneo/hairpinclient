@@ -28,3 +28,10 @@ export function loading() {
 export function loaded() {
 	return {type: types.LOADED};
 }
+
+export function bottomadshow() {
+	return {type: types.BOTTOMADSHOW};
+}
+export function bottomadhide() {
+	return {type: types.BOTTOMADHIDE};
+}
