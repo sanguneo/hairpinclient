@@ -31,7 +31,7 @@ export function loginAsync(userinfo, precallback) {
 					email: response.data.email,
 					signhash: response.data.signhash,
 					name: response.data.nickname,
-					designsize: response.data.designsize,
+					recipesize: response.data.recipesize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 					status: true
@@ -68,7 +68,7 @@ export function updateAsync() {
 		).then((response) => {
 			if (response.data.message === 'success') {
 				const resUserstat = {
-					designsize: response.data.designsize,
+					recipesize: response.data.recipesize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 				};

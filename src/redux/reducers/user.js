@@ -9,7 +9,7 @@ const initialState = Immutable({
 	email: '',
 	signhash: '',
 	name: '',
-	designsize: 0,
+	recipesize: 0,
 	followersize: 0,
 	followingsize: 0
 });

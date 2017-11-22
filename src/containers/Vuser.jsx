@@ -15,7 +15,7 @@ class Vuser extends React.Component {
 			signhash: '',
 			nickname : 'noname',
 			amIfollowing: false,
-			designsize: 0,
+			recipesize: 0,
 			followersize: 0,
 			followingsize: 0,
 			_id: null,
@@ -47,7 +47,7 @@ class Vuser extends React.Component {
 					signhash: response.data.signhash,
 					nickname : response.data.nickname,
 					amIfollowing : response.data.amIfollowing,
-					designsize: response.data.designsize,
+					recipesize: response.data.recipesize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 					_id: response.data._id
@@ -117,9 +117,9 @@ class Vuser extends React.Component {
 					<div className="info">
 						<div className="username">{this.state.nickname ? this.state.nickname : 'noname'}</div>
 						<div className="myCounts">
-							<div className="designcnt">
-								<div className="indi">{Util.readablized(this.state.designsize)}</div>
-								<div className="label">designs</div>
+							<div className="recipecnt">
+								<div className="indi">{Util.readablized(this.state.recipesize)}</div>
+								<div className="label">recipes</div>
 							</div>
 							<div className="follower">
 								<div className="indi">{Util.readablized(this.state.followersize)}</div>
