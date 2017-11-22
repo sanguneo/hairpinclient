@@ -22,5 +22,4 @@ class Vuseritem extends React.Component {
 }
 
 const mapStateToProps = state => ({app: state.app});
-
 export default connect (mapStateToProps) (Vuseritem);
