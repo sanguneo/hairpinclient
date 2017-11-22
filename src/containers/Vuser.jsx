@@ -53,7 +53,6 @@ class Vuser extends React.Component {
 					_id: response.data._id
 				},() => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
-					//this.forceUpdate();
 				});
 			} else if (response.data.message === 'noaccount')  {
 				setTimeout(() => {this.props.dispatch(appAction.loaded());},500);

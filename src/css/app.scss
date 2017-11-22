@@ -68,10 +68,13 @@ html {
       }
       div:first-child {
         padding: 0 10px;
-        width: calc(100% - 200px);
+        width: calc(100% - 150px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       div:last-child {
-        width: 200px;
+        width: 150px;
         text-align: center;
       }
     }
