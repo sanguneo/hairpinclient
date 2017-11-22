@@ -47,7 +47,7 @@ class Vuser extends React.Component {
 					signhash: response.data.signhash,
 					nickname : response.data.nickname,
 					amIfollowing : response.data.amIfollowing,
-					recipesize: response.data.recipesize,
+					recipesize: response.data.designsize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 					_id: response.data._id

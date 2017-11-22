@@ -31,7 +31,7 @@ export function loginAsync(userinfo, precallback) {
 					email: response.data.email,
 					signhash: response.data.signhash,
 					name: response.data.nickname,
-					recipesize: response.data.recipesize,
+					recipesize: response.data.designsize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 					status: true
