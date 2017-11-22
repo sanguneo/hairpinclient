@@ -39,9 +39,7 @@ class Vuserlist extends React.Component {
 		const query = queryarg || '';
 		if (this.state.lastQueryString !== query) {
 			this.setState({lastQueryString : query});
-		} else {
-			return;
-		}
+		} else return;
 		this.props.dispatch(appAction.loading());
 		axios.get(
 			`http://hpserver.sanguneo.com/user/searchuser/${query}`,
