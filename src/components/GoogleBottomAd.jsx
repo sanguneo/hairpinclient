@@ -12,11 +12,17 @@ class GoogleBottomAd extends React.Component {
 	componentDidMount() {
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	}
+	hide() {
+		this.props.dispatch(appAction.bottomadhide());
+		setTimeout(() => {
+			this.props.dispatch(appAction.bottomadshow());
+		}, 30000);
+	}
 	render() {
 		let classList = 'googlebottomad';
 		classList += this.props.app.bottomad ? ' showed' : '';
 		return (<div className={classList}>
-			<div className="closeBtn" onClick={() => {this.props.dispatch(appAction.bottomadhide())}}></div>
+			<div className="closeBtn" onClick={() => {this.hide()}}></div>
 			<ins className="adsbygoogle"
 				 style={{display:'inline-block', width: 320 + 'px', height: 50 + 'px'}}
 				 data-ad-client="ca-pub-4210320191405594"
