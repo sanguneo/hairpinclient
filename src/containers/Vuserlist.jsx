@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as appAction from '../redux/actions/app';
 import Vuseritem from '../components/Vuseritem';
 import Searchbox from '../components/Searchbox';
+import usericon from '../img/user.svg';
 
 class Vuserlist extends React.Component {
 	constructor(props) {
@@ -14,10 +15,11 @@ class Vuserlist extends React.Component {
 			queryString: '',
 			lastQueryString: '#undefined',
 			items: [],
+			fillers: [],
 			goToLogin: false
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
-
+		this.resize = this.resize.bind(this);
 	}
 
 	handleInputChange(event) {
@@ -60,6 +62,7 @@ class Vuserlist extends React.Component {
 				}, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				});
+				this.resize();
 			} else {
 				setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				console.log('error')
@@ -70,8 +73,23 @@ class Vuserlist extends React.Component {
 		});
 	}
 
+	resize(){
+		const ele = document.querySelector('.vuserresults');
+		const columns = Math.ceil(ele.offsetWidth / ele.querySelector('.vuseritem:first-child').offsetWidth) - 1;
+		if (this.state.items.length < columns) return;
+		const remains = columns - (this.state.items.length % columns);
+		const fillers = [];
+		for (let fillerIdx = 0; fillerIdx < remains; fillerIdx++)
+			fillers.push(<li key={'fake_'+fillerIdx} className="vuseritemfill" />);
+		this.setState({fillers});
+	}
+
 	componentWillMount() {
-		this.searchUser()
+		this.searchUser();
+		window.addEventListener('resize', this.resize);
+	}
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.resize);
 	}
 
 	render() {
@@ -88,6 +106,7 @@ class Vuserlist extends React.Component {
 					/>
 					<ul className="vuserresults">
 						{this.state.items}
+						{this.state.fillers}
 					</ul>
 					{this.state.items.length <= 0 ? <div className="noresult">검색결과가 없습니다.</div> : null}
 				</div>
