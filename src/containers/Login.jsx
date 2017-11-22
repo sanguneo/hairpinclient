@@ -49,8 +49,9 @@ class Login extends React.Component {
 	}
 
 	componentWillMount() {
+		if(this.props.user.token && this.props.user.token !== '') return;
 		this.props.dispatch(appAction.loading());
-		this.props.dispatch(userAction.updateAsync(this.loginInfo, () => {
+		this.props.dispatch(userAction.updateAsync(() => {
 			this.props.dispatch(appAction.loaded());
 		}));
 	}

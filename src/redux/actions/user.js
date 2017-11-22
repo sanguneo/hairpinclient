@@ -53,7 +53,7 @@ export function update(userstat) {
 	return {type: types.USERUPDATE, userstat};
 }
 
-export function updateAsync() {
+export function updateAsync(precallback) {
 	return async (dispatch, getState) => {
 		const usertoken = await getState().user.token;
 		axios.get(
@@ -62,19 +62,20 @@ export function updateAsync() {
 				headers: {
 					Accept: 'application/json',
 					'Content-Type': 'application/json',
-					nekotnipriah: usertoken
+					nekotnipriah: await usertoken
 				}
 			}
 		).then((response) => {
+			precallback();
 			if (response.data.message === 'success') {
 				const resUserstat = {
-					recipesize: response.data.recipesize,
+					recipesize: response.data.designsize,
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 				};
 				dispatch(update(resUserstat));
 				let userinfo = JSON.parse(window.sessionStorage.getItem('hairpinToken'));
-				userinfo = Object.assign(userinfo, resUserstat);
+				userinfo = Object.assign({}, userinfo, resUserstat);
 				window.sessionStorage.setItem('hairpinToken', JSON.stringify(userinfo));
 			}
 		}).catch(e => {
