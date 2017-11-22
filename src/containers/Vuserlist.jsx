@@ -54,7 +54,7 @@ class Vuserlist extends React.Component {
 		).then((response) => {
 			if (response.data.message === 'success') {
 				this.setState({
-					items: response.data.user.filter((e) => e.signhash !== this.props.user.signhash).map(
+					items: response.data.user.map(
 						(itemSrc) => <Vuseritem key={itemSrc._id} name={itemSrc.nickname} signhash={itemSrc.signhash} />
 					)
 				}, () => {
