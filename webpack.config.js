@@ -66,7 +66,7 @@ const config = {
                     loose: true,
                   },
                 ],
-                'flow',
+                // 'flow',
                 'stage-0',
                 'react',
               ],
