@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import {connect} from 'react-redux';
 import { Redirect } from 'react-router';
@@ -58,7 +59,7 @@ class Tagcloud extends React.Component {
 			if (response.data.message === 'success') {
 				this.setState({
 					items: response.data.tags.map(
-						(itemSrc) => {return {text: itemSrc._id, value: Math.round(itemSrc.count*360), signhash: itemSrc.signhash}}
+						(itemSrc) => {return {text: itemSrc._id, value: itemSrc.count*5, signhash: itemSrc.signhash}}
 					)
 				}, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
