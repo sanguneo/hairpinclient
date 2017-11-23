@@ -31,6 +31,11 @@ class Menu extends React.Component {
 				</NavLink>
 			</li>
 			<li className="item">
+				<NavLink to="/tagcloud" className="link" activeClassName="active" onClick={this.menuclose}>
+					태그찾기
+				</NavLink>
+			</li>
+			<li className="item">
 				<NavLink to="/vuserlist" className="link" activeClassName="active" onClick={this.menuclose}>
 					회원찾기
 				</NavLink>

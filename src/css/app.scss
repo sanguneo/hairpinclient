@@ -334,3 +334,14 @@ html {
     text-align: center;
   }
 }
+.tagcloud {
+  width: 100%;
+  padding-top: 50px;
+  .tagresults {
+    width: 100%;
+  }
+  .noresult {
+    margin-top: 10%;
+    text-align: center;
+  }
+}
