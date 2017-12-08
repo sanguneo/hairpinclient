@@ -10,7 +10,7 @@ class Login extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			recipesize: 0,
+			designsize: 0,
 			followersize: 0,
 			followingsize: 0,
 		}
@@ -77,8 +77,8 @@ class Login extends React.Component {
 						<div className="username">{this.props.user.name}</div>
 						<div className="myCounts">
 							<div className="recipecnt">
-								<div className="indi">{this.props.user.recipesize}</div>
-								<div className="label">recipes</div>
+								<div className="indi">{this.props.user.designsize}</div>
+								<div className="label">designs</div>
 							</div>
 							<div className="follower">
 								<div className="indi">{this.props.user.followersize}</div>

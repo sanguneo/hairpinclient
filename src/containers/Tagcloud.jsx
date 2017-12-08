@@ -82,7 +82,6 @@ class Tagcloud extends React.Component {
 				width: window.innerWidth
 			})
 		}, 100);
-
 	}
 
 	componentWillMount() {
