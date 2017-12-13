@@ -191,7 +191,7 @@ const config = {
     contentBase: path.join (__dirname, publicFile),
     compress: true,
     hot: true,
-    host: 'hpclient.sanguneo.com',
+    host: '0.0.0.0',
     port: devPORT,
     clientLogLevel: 'none',
     historyApiFallback: true,
