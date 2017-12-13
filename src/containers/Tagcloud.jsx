@@ -62,6 +62,7 @@ class Tagcloud extends React.Component {
 				// }, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				// });
+
 				console.log(response.data.tags);
 				this.resize();
 			} else {
