@@ -18,7 +18,7 @@ class Tagcloud extends React.Component {
 		this.state = {
 			queryString: '',
 			lastQueryString: '#undefined',
-			items: [],
+			tags: [],
 			width: 200,
 			height: 200,
 			goToLogin: false
@@ -57,11 +57,11 @@ class Tagcloud extends React.Component {
 			}
 		).then((response) => {
 			if (response.data.message === 'success') {
-				// this.setState({
-				// 	items: response.data.tags.map((itemSrc) => ({text: itemSrc._id, value: itemSrc.count*5, signhash: itemSrc.signhash}))
-				// }, () => {
+				this.setState({
+					tags: response.data.tags.map((tag, key) => ({text: key, value: tag}))
+				}, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
-				// });
+				});
 
 				console.log(response.data.tags);
 				this.resize();
@@ -108,12 +108,12 @@ class Tagcloud extends React.Component {
 							   onSearch={() => {this.searchTag(this.tagsearch.state.queryString)}}
 					/>
 					<WordCloud
-						data={this.state.items}
+						data={this.state.tags}
 						font='Noto Sans KR'
 						fontSizeMapper={fontSizeMapper}
 						width={this.state.width}
 						height={this.state.height}
-						onClickWord={(e) => console.log(e.signhash)}
+						onClickWord={(e) => console.log(e.text)}
 					/>
 					{this.state.items.length <= 0 ? <div className="noresult">검색결과가 없습니다.</div> : null}
 				</div>
