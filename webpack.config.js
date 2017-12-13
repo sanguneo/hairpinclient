@@ -191,6 +191,7 @@ const config = {
     contentBase: path.join (__dirname, publicFile),
     compress: true,
     hot: true,
+	headers: { "Access-Control-Allow-Origin": "*" },
     host: '0.0.0.0',
     port: devPORT,
     clientLogLevel: 'none',
