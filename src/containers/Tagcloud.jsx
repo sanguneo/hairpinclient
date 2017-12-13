@@ -47,7 +47,7 @@ class Tagcloud extends React.Component {
 		} else return;
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/user/searchtag/${query}`,
+			`http://hpserver.sanguneo.com/design/tag/${query}`,
 			{
 				headers : {
 					Accept: 'application/json',
@@ -57,13 +57,12 @@ class Tagcloud extends React.Component {
 			}
 		).then((response) => {
 			if (response.data.message === 'success') {
-				this.setState({
-					items: response.data.tags.map(
-						(itemSrc) => {return {text: itemSrc._id, value: itemSrc.count*5, signhash: itemSrc.signhash}}
-					)
-				}, () => {
+				// this.setState({
+				// 	items: response.data.tags.map((itemSrc) => ({text: itemSrc._id, value: itemSrc.count*5, signhash: itemSrc.signhash}))
+				// }, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
-				});
+				// });
+				console.log(response.data.tags);
 				this.resize();
 			} else {
 				setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
