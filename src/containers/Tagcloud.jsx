@@ -57,8 +57,15 @@ class Tagcloud extends React.Component {
 			}
 		).then((response) => {
 			if (response.data.message === 'success') {
+				const {tags} = response.data;
+				const tagsArr = [];
+				let key;
+				// eslint-disable-next-line guard-for-in,no-restricted-syntax
+				for (key in tags) {
+					tagsArr.push({text:key, value: tags[key]});
+				}
 				this.setState({
-					tags: response.data.tags.map((tag, key) => ({text: key, value: tag}))
+					tags: tagsArr
 				}, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
 				});
