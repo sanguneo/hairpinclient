@@ -99,7 +99,6 @@ class Tagcloud extends React.Component {
 		return (
 			<div className="tagcloud">
 				<div className="container">
-
 					<Searchbox ref={ref => this.tagsearch = ref}
 							   name="queryString" placeholder="검색어를 입력해주세요."
 							   defaultValue={this.state.queryString}
@@ -115,7 +114,7 @@ class Tagcloud extends React.Component {
 						height={this.state.height}
 						onClickWord={(e) => console.log(e.text)}
 					/>
-					{this.state.items.length <= 0 ? <div className="noresult">검색결과가 없습니다.</div> : null}
+					{this.state.tags.length <= 0 ? <div className="noresult">검색결과가 없습니다.</div> : null}
 				</div>
 			</div>
 		);
