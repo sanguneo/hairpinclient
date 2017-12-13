@@ -191,6 +191,7 @@ const config = {
     contentBase: path.join (__dirname, publicFile),
     compress: true,
     hot: true,
+    host: 'hpclient.sanguneo.com',
     port: devPORT,
     clientLogLevel: 'none',
     historyApiFallback: true,
@@ -206,7 +207,7 @@ const config = {
 if (env === 'development') {
   config.entry.unshift (
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://hpclient.sanguneo.com',
+    `webpack-dev-server/client?http://hpclient.sanguneo.com`,
     'webpack/hot/only-dev-server'
   );
   config.plugins.unshift (
