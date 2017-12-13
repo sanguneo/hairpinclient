@@ -195,7 +195,7 @@ const config = {
     port: devPORT,
     clientLogLevel: 'none',
     historyApiFallback: true,
-    open: true,
+    open: false,
     openPage: '', // Avoid /undefined bug
   },
   devtool: process.env.NODE_ENV === 'production'

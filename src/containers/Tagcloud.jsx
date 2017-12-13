@@ -61,8 +61,11 @@ class Tagcloud extends React.Component {
 				const tagsArr = [];
 				let key;
 				// eslint-disable-next-line guard-for-in,no-restricted-syntax
+				let maxArr = []; for (key in tags) maxArr.push(tags[key])
+				let max = Math.max.apply(null, maxArr);
+				let rate = 100/max;
 				for (key in tags) {
-					tagsArr.push({text:key, value: tags[key]});
+					tagsArr.push({text:key, value: tags[key]*rate});
 				}
 				this.setState({
 					tags: tagsArr
