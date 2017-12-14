@@ -27,7 +27,7 @@ class Menu extends React.Component {
 			</li>
 			<li className="item">
 				<NavLink to="" className="link" activeClassName="active" onClick={(e) => {e.preventDefault();alert('준비중입니다!');}/*this.menuclose*/}>
-					레시피찾기
+					디자인찾기
 				</NavLink>
 			</li>
 			<li className="item">
