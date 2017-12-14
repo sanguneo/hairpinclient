@@ -10,6 +10,7 @@ import Notice from '../containers/Notice';
 import Login from '../containers/Login';
 import Vuser from '../containers/Vuser';
 import Vuserlist from '../containers/Vuserlist';
+import Designlist from '../containers/Designlist';
 import Tagcloud from '../containers/Tagcloud';
 import Loading from "../components/Loading";
 import GoogleBottomAd from "../components/GoogleBottomAd";
@@ -26,6 +27,7 @@ export default () => (
             <Route exact path="/notice" component={Notice} />
 			<Route exact path="/vuser" component={Vuser} />
 			<Route exact path="/vuserlist" component={Vuserlist} />
+	        <Route exact path="/designlist" component={Designlist} />
 			<Route exact path="/tagcloud" component={Tagcloud} />
             <Route render={() => <h1 style={{position: 'absolute', top: 'calc(50% - 20px)', left: 'calc(50% - 90px)'}}>Not Found :(</h1>} />
         </Switch>

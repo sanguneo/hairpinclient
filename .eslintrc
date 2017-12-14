@@ -30,7 +30,7 @@
   },
   "rules": {
     "linebreak-style": 0,
-    "new-cap": [
+    /*"new-cap": [
       2,
       {
         "capIsNewExceptions": [
@@ -38,9 +38,9 @@
           "List"
         ]
       }
-    ],
+    ],*/
     "no-console": 0,
     "arrow-parens": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
   }
 }
