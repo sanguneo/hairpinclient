@@ -206,7 +206,7 @@ const config = {
 if (env === 'development') {
   config.entry.unshift (
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://localhost:${devPORT}`,
+    `webpack-dev-server/client?http://hpclient.sanguneo.com`,
     'webpack/hot/only-dev-server'
   );
   config.plugins.unshift (
