@@ -28,6 +28,10 @@ export default {
 		let date = new Date(isodate);
 		return this.formatter(date, format);
 	},
+	isoToTimestamp: function(isodate) {
+		const date = new Date(isodate);
+		return date.getTime();
+	},
 	emailcheck: (email) =>{
 		let regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		return (typeof(email) !== 'undefined' && email !== '' && regex.test(email));

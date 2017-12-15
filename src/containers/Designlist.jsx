@@ -5,15 +5,15 @@ import axios from 'axios';
 
 import * as appAction from '../redux/actions/app';
 
-import Vuseritem from '../components/Vuseritem';
+import Designitem from '../components/Designitem';
 import Searchbox from '../components/Searchbox';
+
+import Util from '../services/util_svc';
 
 class Designlist extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			queryString: '',
-			lastQueryString: '#undefined',
 			items: [],
 			fillers: [],
 			goToLogin: false
@@ -37,13 +37,9 @@ class Designlist extends React.Component {
 			});
 			return;
 		}
-		const query = queryarg || '';
-		if (this.state.lastQueryString !== query) {
-			this.setState({lastQueryString : query});
-		} else return;
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/design/designs/${query}`,
+			`http://hpserver.sanguneo.com/design/designs/`,
 			{
 				headers : {
 					Accept: 'application/json',
@@ -54,8 +50,9 @@ class Designlist extends React.Component {
 		).then((response) => {
 			if (response.data.message === 'success') {
 				this.setState({
-					items: response.data.user.map(
-						(itemSrc) => <Vuseritem key={itemSrc._id} name={itemSrc.nickname} signhash={itemSrc.signhash} />
+					items: response.data.designs.sort((a,b)=> Util.isoToTimestamp(b.regDate) - Util.isoToTimestamp(a.regDate)).map(
+						(itemSrc, idx) => <Designitem key={idx} nickname={itemSrc.nickname} signhash={itemSrc.signhash}
+										regDate={itemSrc.regDate} designHash={itemSrc.designHash} title={itemSrc.title} />
 					)
 				}, () => {
 					setTimeout(() => {this.props.dispatch(appAction.loaded());},500);
@@ -72,13 +69,14 @@ class Designlist extends React.Component {
 	}
 
 	resize(){
-		const ele = document.querySelector('.vuserresults');
-		const columns = Math.ceil(ele.offsetWidth / ele.querySelector('.vuseritem:first-child').offsetWidth) - 1;
+		const ele = document.querySelector('.designresults');
+		if(!ele.querySelector('.designitem:first-child').offsetWidth) return;
+		const columns = Math.ceil(ele.offsetWidth / ele.querySelector('.designitem:first-child').offsetWidth) - 1;
 		if (this.state.items.length < columns) return;
 		const remains = columns - (this.state.items.length % columns);
 		const fillers = [];
 		for (let fillerIdx = 0; fillerIdx < remains; fillerIdx++)
-			fillers.push(<li key={`fake_${fillerIdx}`} className="vuseritemfill" />);
+			fillers.push(<li key={`fake_${fillerIdx}`} className="designitemfill" />);
 		this.setState({fillers});
 	}
 
@@ -95,14 +93,9 @@ class Designlist extends React.Component {
 			return <Redirect push to="/login" />;
 		}
 		return (
-			<div className="vuserlist">
+			<div className="designlist">
 				<div className="container">
-					<Searchbox name="queryString" placeholder="검색어를 입력해주세요. (닉네임, 이메일)"
-							   value={this.state.queryString}
-							   onChange={this.handleInputChange}
-							   onSearch={() => {this.searchUser(this.state.queryString)}}
-					/>
-					<ul className="vuserresults">
+					<ul className="designresults">
 						{this.state.items}
 						{this.state.fillers}
 					</ul>

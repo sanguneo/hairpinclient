@@ -1,4 +1,4 @@
-import * as types from '../actionType/vuser';
+import * as types from '../actionType/design';
 
 export function designset(design) {
 	return {type: types.DESIGNSET, design};
