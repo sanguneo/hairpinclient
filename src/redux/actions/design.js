@@ -7,3 +7,11 @@ export function designset(design) {
 export function designunset() {
 	return {type: types.DESIGNUNSET};
 }
+
+export function tagset(tag) {
+	return {type: types.TAGSET, tag};
+}
+
+export function tagunset() {
+	return {type: types.TAGUNSET};
+}

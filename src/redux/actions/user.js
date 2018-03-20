@@ -73,6 +73,7 @@ export function updateAsync(precallback) {
 					followersize: response.data.followersize,
 					followingsize: response.data.followingsize,
 				};
+
 				dispatch(update(resUserstat));
 				let userinfo = JSON.parse(window.sessionStorage.getItem('hairpinToken'));
 				userinfo = Object.assign({}, userinfo, resUserstat);

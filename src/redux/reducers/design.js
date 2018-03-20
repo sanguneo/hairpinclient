@@ -4,7 +4,8 @@ import * as types from '../actionType/design';
 
 const initialState = Immutable({
 	signhash: '',
-	designHash: ''
+	designHash: '',
+	tag: ''
 });
 
 export default function design(state = initialState, action = {}) {
@@ -16,6 +17,10 @@ export default function design(state = initialState, action = {}) {
 				signhash: '',
 				designHash: ''
 			});
+		case types.TAGSET :
+			return Object.assign({}, state, {tag: action.tag});
+		case types.TAGUNSET :
+			return Object.assign({}, state, {tag:''});
 		default:
 			return state;
 	}

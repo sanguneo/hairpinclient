@@ -25,8 +25,7 @@ class Design extends React.Component {
 
 
 	getDesign(signhash, designHash) {
-		console.log(signhash, designHash);
-		this.props.dispatch(appAction.loading());
+		appAction.loading();
 		axios.post(
 			`http://hpserver.sanguneo.com/design/getdesign`,
 			{signhash, designHash},

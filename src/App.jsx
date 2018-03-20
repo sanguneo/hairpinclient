@@ -19,7 +19,7 @@ const store = configure (persistedState);
 
 const App = () => (
     <Provider store={store}>
-        <Router>
+        <Router history={Router}>
             <Routes />
         </Router>
     </Provider>

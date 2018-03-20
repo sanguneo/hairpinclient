@@ -6,6 +6,7 @@ import axios from 'axios';
 import WordCloud from '../ext/react-d3-cloud';
 
 import * as appAction from '../redux/actions/app';
+import * as designAction from '../redux/actions/design';
 
 import Searchbox from '../components/Searchbox';
 
@@ -97,6 +98,11 @@ class Tagcloud extends React.Component {
 		window.removeEventListener('resize', this.resize);
 	}
 
+	goDesignListByTag(tag) {
+		this.props.dispatch(designAction.tagset(tag));
+		this.props.history.push('/designlistbytag');
+	}
+
 	render() {
 		if(this.state.goToLogin) {
 			return <Redirect push to="/login" />;
@@ -117,7 +123,7 @@ class Tagcloud extends React.Component {
 						fontSizeMapper={fontSizeMapper}
 						width={this.state.width}
 						height={this.state.height}
-						onClickWord={(e) => console.log(e.text)}
+						onClickWord={(e) => this.goDesignListByTag(e.text)}
 					/>
 					{this.state.tags.length <= 0 ? <div className="noresult">검색결과가 없습니다.</div> : null}
 				</div>
