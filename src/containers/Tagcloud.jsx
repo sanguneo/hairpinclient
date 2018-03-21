@@ -84,7 +84,7 @@ class Tagcloud extends React.Component {
 		clearTimeout(this.resizeTimer);
 		this.resizeTimer = setTimeout(() => {
 			this.setState({
-				height: window.innerHeight - 160,
+				height: window.innerHeight - 260,
 				width: window.innerWidth
 			})
 		}, 100);
@@ -117,15 +117,17 @@ class Tagcloud extends React.Component {
 							   onChange={(e) => {this.tagsearch.setState({[e.target.name] : e.target.value});this.zeroLength(e)}}
 							   onSearch={() => {this.searchTag(this.tagsearch.state.queryString)}}
 					/>
-					<WordCloud
-						data={this.state.tags}
-						font='Noto Sans KR'
-						fontSizeMapper={fontSizeMapper}
-						width={this.state.width}
-						height={this.state.height}
-						onClickWord={(e) => this.goDesignListByTag(e.text)}
-					/>
-					{this.state.tags.length <= 0 ? <div className="noresult">검색결과가 없습니다.</div> : null}
+					{this.state.tags.length <= 0 ?
+						<div className="noresult" style={{height: this.state.height-100, lineHeight: this.state.height-100}}>검색결과가 없습니다.</div> :
+						<WordCloud
+							data={this.state.tags}
+							font='Noto Sans KR'
+							fontSizeMapper={fontSizeMapper}
+							width={this.state.width}
+							height={this.state.height}
+							onClickWord={(e) => this.goDesignListByTag(e.text)}
+						/>
+					}
 				</div>
 			</div>
 		);
