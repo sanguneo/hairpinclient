@@ -58,7 +58,7 @@ class Login extends React.Component {
 
 	render() {
 		const userIcon = (this.props.user.token
-			? `http://hpserver.sanguneo.com/upload/profiles/${this.props.user.signhash}`
+			? `http://${location.host}/upload/profiles/${this.props.user.signhash}`
 			: user
 		);
 		return (

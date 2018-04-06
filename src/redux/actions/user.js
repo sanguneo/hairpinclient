@@ -14,7 +14,7 @@ export function logout() {
 export function loginAsync(userinfo, precallback) {
 	return async (dispatch) => {
 		axios.post(
-			'https://hpserver.sanguneo.com/user/login',
+			`https://${location.host}/user/login`,
 			userinfo,
 			{
 				headers: {
@@ -57,7 +57,7 @@ export function updateAsync(precallback) {
 	return async (dispatch, getState) => {
 		const usertoken = await getState().user.token;
 		axios.get(
-			'http://hpserver.sanguneo.com/user/userstat',
+			`http://${location.host}/user/userstat`,
 			{
 				headers: {
 					Accept: 'application/json',

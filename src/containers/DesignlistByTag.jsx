@@ -37,7 +37,7 @@ class DesignlistByTag extends React.Component {
 		}
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/design/tagdesigns/${this.props.design.tag}`,
+			`http://${location.host}/design/tagdesigns/${this.props.design.tag}`,
 			{
 				headers : {
 					Accept: 'application/json',

@@ -33,7 +33,7 @@ class CommonHeader extends React.Component {
 	render() {
 		const thin = window.location.pathname !== '/';
 		const userIcon = (this.props.user.status
-			? `http://hpserver.sanguneo.com/upload/profiles/${this.props.user.signhash}`
+			? `http://${location.host}/upload/profiles/${this.props.user.signhash}`
 			: user
 		);
 		return <header className={thin ? "commonHeader thin" : "commonHeader"}>

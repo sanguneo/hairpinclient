@@ -29,7 +29,7 @@ class Notice extends React.Component {
 
 	getNotices() {
 		this.props.dispatch(appAction.loading());
-		axios.get('http://hpserver.sanguneo.com/notice/list').then((response) => {
+		axios.get(`http://${location.host}/notice/list`).then((response) => {
 			if(response.data.code === 310) {
 				this.setState({
 					rows: response.data.notice.map((e) => <li key={e._id} onClick={()=> {this.getNotice(e._id)}}><div>{e.title}</div><div>{Util.isoFormatter(e.regDate)}</div></li>)
@@ -42,7 +42,7 @@ class Notice extends React.Component {
 		}).catch(e => {console.log(e)})
 	}
 	getNotice(_id) {
-		axios.get(`http://hpserver.sanguneo.com/notice/${_id}`).then((response) => {
+		axios.get(`http://${location.host}/notice/${_id}`).then((response) => {
 			if(response.data.code === 340) {
 				const res = response.data.notice;
 				res.regDate = Util.isoFormatter(res.regDate);

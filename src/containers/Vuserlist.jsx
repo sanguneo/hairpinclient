@@ -43,7 +43,7 @@ class Vuserlist extends React.Component {
 		} else return;
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/user/searchuser/${query}`,
+			`http://${location.host}/user/searchuser/${query}`,
 			{
 				headers : {
 					Accept: 'application/json',

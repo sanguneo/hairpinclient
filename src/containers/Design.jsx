@@ -27,7 +27,7 @@ class Design extends React.Component {
 	getDesign(signhash, designHash) {
 		appAction.loading();
 		axios.post(
-			`http://hpserver.sanguneo.com/design/getdesign`,
+			`http://${location.host}/design/getdesign`,
 			{signhash, designHash},
 			{
 				headers : {
@@ -73,7 +73,7 @@ class Design extends React.Component {
 	}
 
 	render() {
-		const ORG = `http://hpserver.sanguneo.com/upload/designs/${this.props.design.signhash}_${this.props.design.designHash}_ORG.scalb`;
+		const ORG = `http://${location.host}/upload/designs/${this.props.design.signhash}_${this.props.design.designHash}_ORG.scalb`;
 		const tags = this.state.designTag.map((tag, idx) => <input key={idx} type="button" value={'#' + tag} onClick={()=> {console.log(tag)}}/>);
 		return (
 			<div className="design">

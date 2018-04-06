@@ -22,6 +22,7 @@ class Menu extends React.Component {
 		return (<ul className={classList}>
 			<li className="item">
 				<NavLink to="/" className="link" exact activeClassName="active" onClick={this.menuclose}>
+
 					메인
 				</NavLink>
 			</li>

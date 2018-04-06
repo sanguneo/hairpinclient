@@ -33,7 +33,7 @@ class Vuser extends React.Component {
 		}
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/user/vuser/${signhash}`,
+			`http://${location.host}/user/vuser/${signhash}`,
 			{
 				headers : {
 					Accept: 'application/json',
@@ -66,7 +66,7 @@ class Vuser extends React.Component {
 	sendFollow(){
 		this.props.dispatch(appAction.loading());
 		axios.post(
-			`http://hpserver.sanguneo.com/user/${(!this.state.amIfollowing ? 'follow' : 'unfollow')}`,
+			`http://${location.host}/user/${(!this.state.amIfollowing ? 'follow' : 'unfollow')}`,
 			{signhash: this.state.signhash},
 			{
 				headers : {
@@ -106,7 +106,7 @@ class Vuser extends React.Component {
 			return <Redirect push to="/login" />;
 		}
 		const userIcon = (this.state.signhash && this.state.signhash !== ''
-				? `http://hpserver.sanguneo.com/upload/profiles/${this.state.signhash}`
+				? `http://${location.host}/upload/profiles/${this.state.signhash}`
 				: user
 		);
 		return (

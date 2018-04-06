@@ -48,7 +48,7 @@ class Tagcloud extends React.Component {
 		} else return;
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/design/tags/7`,
+			`http://${location.host}/design/tags/7`,
 			{
 				headers : {
 					Accept: 'application/json',

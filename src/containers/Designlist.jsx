@@ -39,7 +39,7 @@ class Designlist extends React.Component {
 		}
 		this.props.dispatch(appAction.loading());
 		axios.get(
-			`http://hpserver.sanguneo.com/design/designs/`,
+			`http://${location.host}/design/designs/`,
 			{
 				headers : {
 					Accept: 'application/json',
